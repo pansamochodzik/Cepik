@@ -1,0 +1,9 @@
+<h1>Welcome To Car List</h1>
+
+<% @cars.each do |car| %>
+  <p>
+    <%= car.id %> |
+    <%= car.name %> |
+    <%= car.colour %>
+  </p>
+<% end %>
