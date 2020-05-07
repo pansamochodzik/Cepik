@@ -62,3 +62,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'faker', '~> 2.11'
+
+gem 'database_cleaner', '~> 1.8', '>= 1.8.5'
