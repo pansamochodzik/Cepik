@@ -12,6 +12,7 @@ class CarsController < ApplicationController
   end
 
   def create
+    binding.pry
     @car = Car.new(new_car_params)
     if @car.save
       redirect_to cars_path
@@ -25,4 +26,6 @@ class CarsController < ApplicationController
   def new_car_params
     params.require(:car).permit(:name, :colour)
   end
+
+
 end
