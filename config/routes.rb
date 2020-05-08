@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :cars, only: [:index, :show, :new, :create]
+  resources :cars
 end
