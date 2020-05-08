@@ -1,6 +1,12 @@
-<p>
-<strong>Name:<%= @car.name %></strong><br>
-<strong>Colour:<%= @car.colour %></strong>
-</p>
-
-<%= link_to 'Back', :back %>
+<table>
+  <thead>
+    <td>Name</td>
+    <td>Colour</td>
+    <td>Action</td>
+  </thead>
+  <tbody>
+    <td><%= @car.name %></td>
+    <td><%= @car.colour %></td>
+    <td><%= link_to 'Back', :back %></td>
+  </tbody>
+</table>

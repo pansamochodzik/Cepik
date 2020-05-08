@@ -1,10 +1,18 @@
 <h1>Welcome To Car List</h1>
 
-<% @cars.each do |car| %>
-  <p>
-    <%= car.id %> |
-    <%= car.name %> |
-    <%= car.colour %> |
-    <%= link_to 'show', car_path(car) %>
-  </p>
-<% end %>
+<table>
+  <thead>
+    <th>No.</th>
+    <th>Name</th>
+    <th>Colour</th>
+    <th>Action</th>
+  </thead>
+  <% @cars.each_with_index do |car,index| %>
+    <tbody>
+      <td><%= index + 1 %></td>
+      <td><%= car.name %></td>
+      <td><%= car.colour %></td>
+      <td><%= link_to 'show', car_path(car) %></td>
+    </tbody>
+  <% end %>
+</table>
