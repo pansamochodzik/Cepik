@@ -4,6 +4,7 @@
   <p>
     <%= car.id %> |
     <%= car.name %> |
-    <%= car.colour %>
+    <%= car.colour %> |
+    <%= link_to 'show', car_path(car) %>
   </p>
 <% end %>
