@@ -1,5 +1,5 @@
 <h1>Welcome To Car List</h1>
-
+<%= link_to 'Add new car', new_car_path %>
 <table>
   <thead>
     <th>No.</th>
@@ -7,10 +7,10 @@
     <th>Colour</th>
     <th>Action</th>
   </thead>
-  <% @cars.each_with_index do |car,index| %>
+  <% @cars.each.with_index(1) do |car, index| %>
     <tbody>
-      <td><%= index + 1 %></td>
-      <td><%= car.name %></td>
+      <td><%= index %></td>
+      <td><%= link_to car.name, car_path(car) %></td>
       <td><%= car.colour %></td>
       <td><%= link_to 'show', car_path(car) %></td>
     </tbody>

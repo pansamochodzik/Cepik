@@ -1,0 +1,40 @@
+<h1>Car Form</h1>
+<hr>
+
+<%= form_for @car do |form| %>
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :colour %>
+    <%= form.text_field :colour %>
+  </p>
+  <%= form.submit 'Save' %>
+<% end %>
+<hr>
+
+<%= form_with model: @car do |form| %>
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :colour %>
+    <%= form.text_field :colour %>
+  </p>
+  <%= form.submit 'Save' %>
+<% end %>
+<hr>
+
+<%= form_with url: cars_path do |form| %>
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :colour %>
+    <%= form.text_field :colour %>
+  </p>
+  <%= form.submit 'Save' %>
+<% end %>
