@@ -7,6 +7,6 @@
   <tbody>
     <td><%= @car.name %></td>
     <td><%= @car.colour %></td>
-    <td><%= link_to 'Back', :back %> | <%= link_to 'delete', car_path(@car), method: :delete %></td>
+    <td><%= link_to 'Back', :back %> | <%= link_to 'delete', car_path(@car), method: :delete %> | <%= link_to 'edit', edit_car_path(@car) %> </td>
   </tbody>
 </table>

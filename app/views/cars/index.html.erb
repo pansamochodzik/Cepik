@@ -12,7 +12,7 @@
       <td><%= index %></td>
       <td><%= link_to car.name, car_path(car) %></td>
       <td><%= car.colour %></td>
-      <td><%= link_to 'show', car_path(car) %> | <%= link_to 'delete', car_path(car), method: :delete %></td>
+      <td><%= link_to 'show', car_path(car) %> | <%= link_to 'delete', car_path(car), method: :delete %> | <%= link_to 'edit', edit_car_path(car) %></td>
     </tbody>
   <% end %>
 </table>

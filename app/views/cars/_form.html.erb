@@ -1,0 +1,11 @@
+<%= form_with model: @car do |form| %>
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :colour %>
+    <%= form.text_field :colour %>
+  </p>
+  <%= form.submit 'Save' %>
+<% end %>

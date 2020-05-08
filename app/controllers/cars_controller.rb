@@ -12,8 +12,7 @@ class CarsController < ApplicationController
   end
 
   def create
-    binding.pry
-    @car = Car.new(new_car_params)
+    @car = Car.new(car_params)
     if @car.save
       redirect_to cars_path
     else
@@ -27,9 +26,22 @@ class CarsController < ApplicationController
     redirect_to cars_path
   end
 
+  def edit
+    @car = Car.find(params[:id])
+  end
+
+  def update
+    @car = Car.find(params[:id])
+    if @car.update(car_params)
+      redirect_to cars_path
+    else
+      render 'new'
+    end
+  end
+
   private
 
-  def new_car_params
+  def car_params
     params.require(:car).permit(:name, :colour)
   end
 
