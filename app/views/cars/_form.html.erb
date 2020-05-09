@@ -1,11 +1,14 @@
 <%= form_with model: @car do |form| %>
+
   <p>
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, id: "car_title" %>
+    <%= @car.errors.full_messages_for(:name) if @car.errors.any? %>
   </p>
   <p>
     <%= form.label :colour %>
     <%= form.text_field :colour %>
+    <%= @car.errors.full_messages_for(:colour) if @car.errors.any? %>
   </p>
   <%= form.submit 'Save' %>
 <% end %>

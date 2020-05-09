@@ -8,7 +8,7 @@ class CarsController < ApplicationController
   end
 
   def new
-    @car = Car.new
+    @car = Car.create
   end
 
   def create
@@ -44,6 +44,5 @@ class CarsController < ApplicationController
   def car_params
     params.require(:car).permit(:name, :colour)
   end
-
 
 end
