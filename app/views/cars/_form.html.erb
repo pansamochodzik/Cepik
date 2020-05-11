@@ -1,14 +1,19 @@
-<%= form_with model: @car do |form| %>
-
+<%= form_with model: @car, local: true do |form| %>
+  <% if @car.errors.any? %>
+    <h2>Errors:</h2>
+    <ul>
+      <% @car.errors.full_messages.each do |message|%>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <p>
     <%= form.label :name %>
-    <%= form.text_field :name, id: "car_title" %>
-    <%= @car.errors.full_messages_for(:name) if @car.errors.any? %>
+    <%= form.text_field :name %>
   </p>
   <p>
     <%= form.label :colour %>
     <%= form.text_field :colour %>
-    <%= @car.errors.full_messages_for(:colour) if @car.errors.any? %>
   </p>
   <%= form.submit 'Save' %>
 <% end %>

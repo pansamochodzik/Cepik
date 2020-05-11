@@ -8,7 +8,7 @@ class CarsController < ApplicationController
   end
 
   def new
-    @car = Car.create
+    @car = Car.new
   end
 
   def create
@@ -35,7 +35,7 @@ class CarsController < ApplicationController
     if @car.update(car_params)
       redirect_to cars_path
     else
-      render :new
+      render :edit
     end
   end
 
