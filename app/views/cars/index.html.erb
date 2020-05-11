@@ -8,6 +8,10 @@
     <th>No.</th>
     <th>Name</th>
     <th>Colour</th>
+    <th>Vin number</th>
+    <th>License plate</th>
+    <th>Production at</th>
+    <th>Registration at</th>
     <th>Action</th>
   </thead>
   <% @cars.each.with_index(1) do |car, index| %>
@@ -15,6 +19,10 @@
       <td><%= index %></td>
       <td><%= link_to car.name, car_path(car) %></td>
       <td><%= car.colour %></td>
+      <td><%= car.vin_number %></td>
+      <td><%= car.license_plate %></td>
+      <td><%= car.production_at %></td>
+      <td><%= car.registration_at %></td>
       <td><%= link_to 'show', car_path(car) %> | <%= link_to 'delete', car_path(car), method: :delete %> | <%= link_to 'edit', edit_car_path(car) %></td>
     </tbody>
   <% end %>
