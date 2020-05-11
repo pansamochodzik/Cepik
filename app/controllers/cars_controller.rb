@@ -35,7 +35,7 @@ class CarsController < ApplicationController
   def update
     @car = Car.find(params[:id])
     if @car.update(car_params)
-      flash[:notice]= "Successfully updated."
+      flash[:notice] = "Successfully updated."
       redirect_to cars_path
     else
       render :edit
