@@ -16,7 +16,7 @@ class CarsController < ApplicationController
     if @car.save
       redirect_to cars_path
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -35,7 +35,7 @@ class CarsController < ApplicationController
     if @car.update(car_params)
       redirect_to cars_path
     else
-      render 'new'
+      render :new
     end
   end
 
