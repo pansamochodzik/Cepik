@@ -14,6 +14,7 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
     if @car.save
+      flash[:notice] = "Successfully created."
       redirect_to cars_path
     else
       render :new
@@ -23,6 +24,7 @@ class CarsController < ApplicationController
   def destroy
     @car = Car.find(params[:id])
     @car.destroy
+    flash[:notice]= "Successfully deleted."
     redirect_to cars_path
   end
 
@@ -33,6 +35,7 @@ class CarsController < ApplicationController
   def update
     @car = Car.find(params[:id])
     if @car.update(car_params)
+      flash[:notice]= "Successfully updated."
       redirect_to cars_path
     else
       render :edit
