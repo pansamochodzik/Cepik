@@ -24,7 +24,7 @@ class CarsController < ApplicationController
   def destroy
     @car = Car.find(params[:id])
     @car.destroy
-    flash[:notice] = 'Successfully deleted.''
+    flash[:notice] = 'Successfully deleted.'
     redirect_to cars_path
   end
 
@@ -35,7 +35,7 @@ class CarsController < ApplicationController
   def update
     @car = Car.find(params[:id])
     if @car.update(car_params)
-      flash[:notice]= "Successfully updated."
+      flash[:notice]= 'Successfully updated.'
       redirect_to cars_path
     else
       render :edit
@@ -45,7 +45,6 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:name, :colour, :vin_number, :license_plate, :production_at, :registration_at)
+    params.require(:car).permit(:name, :colour, :vin_number, :license_plate, :year_of_production, :year_of_registration)
   end
-
 end
