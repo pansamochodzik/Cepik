@@ -9,8 +9,8 @@ p "Creating Cars"
     colour: Faker::Vehicle.color,
     vin_number: Faker::Vehicle.vin,
     license_plate: Faker::Vehicle.license_plate,
-    production_at: @production = Faker::Vehicle.year,
-    registration_at: @production + Random.rand(0..2)
+    year_of_production: @production = Faker::Vehicle.year,
+    year_of_registration: @production + Random.rand(0..2)
   )
 end
 
