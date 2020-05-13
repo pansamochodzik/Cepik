@@ -1,20 +1,18 @@
 <section class="bg-light" style="min-height: 400px">
   <div class="container">
     <div class="row">
-      <div class="col-8 text-right text-danger">
-        <h1>Welcome To Car List</h1>
-      </div>
-      <div class="col-4 text-right pt-3">
-        <%= link_to 'Add new car', new_car_path, class: "btn btn-success" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
+      <div class="col-4">
         <% if flash[:notice] %>
-          <div class="alert alert-success" role="alert">
-            <h4><%= flash[:notice] %></h4>
+          <div class="alert alert-success text-center mb-0" role="alert">
+            <h6><%= flash[:notice] %></h6>
           </div>
         <% end %>
+      </div>
+      <div class="col-5 text-left text-danger">
+        <h1>Welcome To Car List</h1>
+      </div>
+      <div class="col-3 text-right pt-3">
+        <%= link_to 'Add new car', new_car_path, class: "btn btn-success" %>
       </div>
     </div>
     <div class="row">
