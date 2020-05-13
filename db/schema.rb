@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_165905) do
+ActiveRecord::Schema.define(version: 2020_05_13_140917) do
 
   create_table "cars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "colour"
     t.string "vin_number"
     t.string "license_plate"
-    t.string "production_at"
-    t.string "registration_at"
+    t.integer "year_of_production"
+    t.integer "year_of_registration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["license_plate"], name: "index_cars_on_license_plate", unique: true
+    t.index ["vin_number"], name: "index_cars_on_vin_number", unique: true
   end
 
 end

@@ -1,47 +1,45 @@
 <%= form_with model: @car, local: true do |form| %>
 <div class="row">
-  <div class="col-2">
-  </div>
-  <div class="col-4">
-    <p>
-      <%= form.label :name %>
-      <%= form.text_field :name %>
-    </p>
-    <p>
-      <%= form.label :colour %>
-      <%= form.text_field :colour %>
-    </p>
-    <p>
-      <%= form.label :vin_number %>
-      <%= form.text_field :vin_number %>
-    </p>
-    <p>
-      <%= form.label :license_plate %>
-      <%= form.text_field :license_plate %>
-    </p>
-    <p>
-      <%= form.label :production_at %>
-      <%= form.text_field :production_at %>
-    </p>
-    <p>
-      <%= form.label :registration_at %>
-      <%= form.text_field :registration_at %>
-    </p>
-    <%= form.submit 'Save', class: "btn btn-primary" %>
-  </div>
-
-  <% if @car.errors.any? %>
-    <div class="col-4 p-0">
-      <div class="alert alert-danger">
-        <h2>Errors:</h2>
-        <ul>
-          <% @car.errors.full_messages.each do |message|%>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
+    <div class="col-2">
     </div>
-  <% end %>
-</div>
-
+    <div class="col-4">
+      <p>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </p>
+      <p>
+        <%= form.label :colour %>
+        <%= form.text_field :colour %>
+      </p>
+      <p>
+        <%= form.label :vin_number %>
+        <%= form.text_field :vin_number %>
+      </p>
+      <p>
+        <%= form.label :license_plate %>
+        <%= form.text_field :license_plate %>
+      </p>
+      <p>
+        <%= form.label :year_of_production %>
+        <%= form.text_field :year_of_production %>
+      </p>
+      <p>
+        <%= form.label :year_of_registration %>
+        <%= form.text_field :year_of_registration %>
+      </p>
+      <%= form.submit 'Save', class: "btn btn-primary" %>
+    </div>
+    <% if @car.errors.any? %>
+      <div class="col-4 p-0">
+        <div class="alert alert-danger">
+          <h2>Errors:</h2>
+          <ul>
+            <% @car.errors.full_messages.each do |message|%>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>

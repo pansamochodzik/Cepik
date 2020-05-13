@@ -1,49 +1,29 @@
-<section class="bg-light" style="min-height: 400px">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 text-right text-danger">
-        <h1>Welcome To Car List</h1>
-      </div>
-      <div class="col-4 text-right pt-3">
-        <%= link_to 'Add new car', new_car_path, class: "btn btn-success" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <% flash.each do |type, flash|%>
-          <div class="alert alert-success" role="alert">
-            <h4><%= flash  %></h4>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <table class="table">
-          <thead class="bg-info">
-            <th>No.</th>
-            <th>Name</th>
-            <th>Colour</th>
-            <th>Vin number</th>
-            <th>License plate</th>
-            <th>Production at</th>
-            <th>Registration at</th>
-            <th>Action</th>
-          </thead>
-          <% @cars.each.with_index(1) do |car, index| %>
-            <tbody class="bg-warning">
-              <td><%= index %></td>
-              <td><%= link_to car.name, car_path(car) %></td>
-              <td><%= car.colour %></td>
-              <td><%= car.vin_number %></td>
-              <td><%= car.license_plate %></td>
-              <td><%= car.production_at %></td>
-              <td><%= car.registration_at %></td>
-              <td><%= link_to 'show', car_path(car) %> | <%= link_to 'delete', car_path(car), method: :delete %> | <%= link_to 'edit', edit_car_path(car) %></td>
-            </tbody>
-          <% end %>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
+<h1>Welcome To Car List</h1>
+<% if flash[:notice] %>
+  <h3><%= flash[:notice] %></h3>
+<% end %>
+<%= link_to 'Add new car', new_car_path %>
+<table>
+  <thead>
+    <th>No.</th>
+    <th>Name</th>
+    <th>Colour</th>
+    <th>Vin number</th>
+    <th>License plate</th>
+    <th>Year of production</th>
+    <th>Year of registration</th>
+    <th>Action</th>
+  </thead>
+  <% @cars.each.with_index(1) do |car, index| %>
+    <tbody>
+      <td><%= index %></td>
+      <td><%= link_to car.name, car_path(car) %></td>
+      <td><%= car.colour %></td>
+      <td><%= car.vin_number %></td>
+      <td><%= car.license_plate %></td>
+      <td><%= car.year_of_production %></td>
+      <td><%= car.year_of_registration %></td>
+      <td><%= link_to 'show', car_path(car) %> | <%= link_to 'delete', car_path(car), method: :delete %> | <%= link_to 'edit', edit_car_path(car) %></td>
+    </tbody>
+  <% end %>
+</table>
