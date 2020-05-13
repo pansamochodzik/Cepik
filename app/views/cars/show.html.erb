@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <table class="table">
-        <thead class="bg-info">
+        <thead class="bg-info text-light">
           <td>Name</td>
           <td>Colour</td>
           <td>Vin number</td>
@@ -18,7 +18,7 @@
           <td><%= @car.license_plate %></td>
           <td><%= @car.year_of_production %></td>
           <td><%= @car.year_of_registration %></td>
-          <td><%= link_to 'Back', :back %> | <%= link_to 'delete', car_path(@car), method: :delete %> | <%= link_to 'edit', edit_car_path(@car) %> </td>
+          <td><%= link_to 'Back', :back, class: "text-dark" %> | <%= link_to 'delete', car_path(@car), method: :delete, class: "text-dark" %> | <%= link_to 'edit', edit_car_path(@car), class: "text-dark" %> </td>
         </tbody>
       </table>
     </div>
