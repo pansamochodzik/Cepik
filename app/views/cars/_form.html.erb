@@ -2,7 +2,7 @@
   <% if @car.errors.any? %>
     <h2>Errors:</h2>
     <ul>
-      <% @car.errors.full_messages.each do |message|%>
+      <% @car.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
