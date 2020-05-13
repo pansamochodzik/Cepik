@@ -10,9 +10,9 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <% flash.each do |type, flash|%>
+        <% if flash[:notice]%>
           <div class="alert alert-success" role="alert">
-            <h4><%= flash  %></h4>
+            <h4><%= flash[:notice]  %></h4>
           </div>
         <% end %>
       </div>
