@@ -16,7 +16,6 @@ default: &default
   username: pansamochodzik
   password: Password!2020
   host: localhost
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
