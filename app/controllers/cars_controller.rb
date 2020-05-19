@@ -13,6 +13,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
+    
     if @car.save
       flash[:notice] = 'Successfully created.'
       redirect_to cars_path
@@ -23,6 +24,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car = Car.find(params[:id])
+
     @car.destroy
     flash[:notice] = 'Successfully deleted.'
     redirect_to cars_path
@@ -34,6 +36,7 @@ class CarsController < ApplicationController
 
   def update
     @car = Car.find(params[:id])
+
     if @car.update(car_params)
       flash[:notice] = 'Successfully updated.'
       redirect_to cars_path
@@ -45,7 +48,13 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:name, :colour, :vin_number,
-    :license_plate, :year_of_production, :year_of_registration)
+    params.require(:car).permit(
+      :name,
+      :colour,
+      :vin_number,
+      :license_plate,
+      :year_of_production,
+      :year_of_registration
+    )
   end
 end

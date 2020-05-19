@@ -16,32 +16,30 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
-        <table class="table">
-          <thead class="bg-info text-light">
-            <th>No.</th>
-            <th>Name</th>
-            <th>Colour</th>
-            <th>Vin number</th>
-            <th>License plate</th>
-            <th>Year of production</th>
-            <th>Year of registration</th>
-            <th>Action</th>
-          </thead>
-          <% @cars.each.with_index(1) do |car, index| %>
-            <tbody class="bg-warning">
-              <td><%= index %></td>
-              <td><%= link_to car.name, car_path(car), class: "text-dark" %></td>
-              <td><%= car.colour %></td>
-              <td><%= car.vin_number %></td>
-              <td><%= car.license_plate %></td>
-              <td><%= car.year_of_production %></td>
-              <td><%= car.year_of_registration %></td>
-              <td><%= link_to 'show', car_path(car), class: "text-dark" %> | <%= link_to 'delete', car_path(car), method: :delete, class: "text-dark" %> | <%= link_to 'edit', edit_car_path(car), class: "text-dark" %></td>
-            </tbody>
-          <% end %>
-        </table>
-      </div>
+      <table class="table">
+        <thead class="bg-info text-light">
+          <th>No.</th>
+          <th>Name</th>
+          <th>Colour</th>
+          <th>Vin number</th>
+          <th>License plate</th>
+          <th>Year of production</th>
+          <th>Year of registration</th>
+          <th>Action</th>
+        </thead>
+        <% @cars.each.with_index(1) do |car, index| %>
+          <tbody class="bg-warning">
+            <td><%= index %></td>
+            <td><%= link_to car.name, car_path(car), class: "text-dark" %></td>
+            <td><%= car.colour %></td>
+            <td><%= car.vin_number %></td>
+            <td><%= car.license_plate %></td>
+            <td><%= car.year_of_production %></td>
+            <td><%= car.year_of_registration %></td>
+            <td><%= link_to 'show', car_path(car), class: "text-dark" %> | <%= link_to 'delete', car_path(car), method: :delete, class: "text-dark" %> | <%= link_to 'edit', edit_car_path(car), class: "text-dark" %></td>
+          </tbody>
+        <% end %>
+      </table>
     </div>
   </div>
 </section>

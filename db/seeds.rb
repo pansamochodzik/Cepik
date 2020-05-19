@@ -1,4 +1,5 @@
 require 'database_cleaner'
+
 DatabaseCleaner.clean_with(:truncation)
 
 p 'Creating Cars'
