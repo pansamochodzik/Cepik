@@ -30,4 +30,22 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        car:
+          attributes:
+            name:
+              invalid: 'can only inlude letters, hyphen and have maximum 15 characters. Cannot be blank. For example: Mercedes-Benz.'
+            colour:
+              invalid: 'can only inlude letters, hyphen and have maximum 20 characters. Cannot be blank. For example: Gray-Metallic.'
+            vin_number:
+              invalid: can only inlude capital letters and numbers.
+            license_plate:
+              invaid: can only inlude capital letters, numbers and hyphen not space. Cannot be blank.
+            year_of_production:
+              inclusion: should be between 1900 and the current year.
+              not_a_number: cannot be blank.
+            year_of_registration:
+              inclusion: should be between 1900 and the current year.
+              not_a_number: cannot be blank.
