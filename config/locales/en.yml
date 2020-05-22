@@ -40,9 +40,9 @@ en:
             colour:
               invalid: 'can only include letters, hyphen and have maximum 20 characters. Cannot be blank. For example: Gray-Metallic.'
             vin_number:
-              invalid: can only inlude capital letters and numbers.
+              invalid: can only include capital letters and numbers.
             license_plate:
-              invaid: can only inlude capital letters, numbers and hyphen not space. Cannot be blank.
+              invaid: can only include capital letters, numbers and hyphen not space. Cannot be blank.
             year_of_production:
               inclusion: should be between 1900 and the current year.
               not_a_number: cannot be blank.
