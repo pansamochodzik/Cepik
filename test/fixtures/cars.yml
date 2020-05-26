@@ -4,6 +4,14 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+valid:
+  name: 'Mercedes-Benz'
+  colour: 'Gray-Metallic'
+  vin_number: 'ASDFGHJKL12345678'
+  license_plate: 'WH-AWMA1'
+  year_of_production: 2012
+  year_of_registration: 2012
+
 one: {}
 # column: value
 #

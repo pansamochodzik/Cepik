@@ -1,13 +1,15 @@
 class Car < ApplicationRecord
-  validates :name, format: { with: /\A[a-zA-Z\d-]{1,15}\z/ }
+  validates :name, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
+                   length: {minimum: 1, maximum: 15}
 
-  validates :colour, format: { with: /\A[a-zA-Z\d-]{1,20}\z/ }
+  validates :colour, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
+                     length: {minimum: 1, maximum: 20}
 
   validates :vin_number, uniqueness: true,
                          length: { is: 17 },
                          format: { with: /\A[A-Z0-9]+\z/ }
 
-  validates :license_plate, format: { with: /\A[A-Z0-9]{2,3}[\d-][A-Z0-9]{4,5}\z/ },
+  validates :license_plate, format: { with: /\A[A-Z0-9]{2,3}[\-][A-Z0-9]{4,5}\z/ },
                             uniqueness: true,
                             length: { is: 8 }
 

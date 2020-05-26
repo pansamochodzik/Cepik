@@ -36,9 +36,9 @@ en:
         car:
           attributes:
             name:
-              invalid: 'can only include letters, hyphen and have maximum 15 characters. Cannot be blank. For example: Mercedes-Benz.'
+              invalid: 'can only include letters and hyphen. Cannot be blank. For example: Mercedes-Benz.'
             colour:
-              invalid: 'can only include letters, hyphen and have maximum 20 characters. Cannot be blank. For example: Gray-Metallic.'
+              invalid: 'can only include letters and hyphen. Cannot be blank. For example: Gray-Metallic.'
             vin_number:
               invalid: can only inlude capital letters and numbers.
             license_plate:
