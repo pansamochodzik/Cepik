@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
+  get 'cars/home', to: 'cars#home'
   resources :cars
   
-  root 'cars#index'
+  root 'cars#home'
 end
