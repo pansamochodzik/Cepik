@@ -1,19 +1,14 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-valid:
+first_car:
   name: 'Mercedes-Benz'
   colour: 'Gray-Metallic'
-  vin_number: 'ASDFGHJKL12345678'
+  vin_number: 'ASDFGHJKL12345671'
   license_plate: 'WH-AWMA1'
   year_of_production: 2012
   year_of_registration: 2012
-
-one: {}
-# column: value
-#
-two: {}
-# column: value
+second_car:
+  name: 'Mercedes-Benz'
+  colour: 'Gray-Metallic'
+  vin_number: 'ASDFGHJKL12345672'
+  license_plate: 'WH-AWMA2'
+  year_of_production: 2012
+  year_of_registration: 2012

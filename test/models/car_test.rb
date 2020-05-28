@@ -2,7 +2,14 @@ require 'test_helper'
 
 class CarTest < ActiveSupport::TestCase
   def setup
-    @car = cars(:valid)
+    @car = cars(:first_car)
+    @second_car = cars(:second_car)
+    @chars = '!','@','#','$','%',"'",'^','&','*','(',')','_','+','{','}','|',':','"','>','?','<','[',']','|','=',';','.','~',"`",","
+  end
+
+  test 'checking validation cars data from fixtures' do
+    assert @car.valid?
+    assert @second_car.valid?
   end
 # tests for name validation:
   test 'car name can be blank?' do
@@ -36,8 +43,10 @@ class CarTest < ActiveSupport::TestCase
   end
 
   test 'car name accepts any special character except dash' do
-    @car.name = /[^-][\W\_]/
-    assert @car.invalid?
+    @chars.each do |chars|
+      @car.name[1] = @car.name[1].replace"#{chars}"
+      assert @car.invalid?
+    end
   end
 # tests for colour validation:
   test 'car colour can be blank?' do
@@ -71,8 +80,10 @@ class CarTest < ActiveSupport::TestCase
   end
 
   test 'car colour accepts any special character except dash?' do
-    @car.colour = /[^-][\W\_]/
-    assert @car.invalid?
+    @chars.each do |chars|
+      @car.colour[1] = @car.colour[1].replace"#{chars}"
+      assert @car.invalid?
+    end
   end
 # tests for vin_number validation:
   test 'car vin number can be blank?' do
@@ -95,12 +106,9 @@ class CarTest < ActiveSupport::TestCase
     assert @car.invalid?
   end
 
-  test 'car vin number can be duplicate?' do
-    @vin = Car.create(vin_number: 'ABCDE1234512345678')
-    @duplicated_item = @vin.dup
-    assert @duplicated_item.invalid?
-    # @car.vin_number = 'ABCDE1234512345678'.dup
-    # assert @car.invalid?
+  test 'car vin number is unique?' do
+    @second_car.vin_number = @car.vin_number
+    assert @second_car.invalid?
   end
 
   test 'car vin number accepts any special character?' do
@@ -158,17 +166,16 @@ class CarTest < ActiveSupport::TestCase
     assert @car.invalid?
   end
 
-  test 'car license plate can be duplicate?' do
-    @plate = Car.create(license_plate: 'WH-AWMA1')
-    @duplicate_item = @plate.dup
-    assert @duplicate_item.invalid?
-    # @car.license_plate = 'WH-AWMA1'.dup
-    # assert @car.valid?
+  test 'car license plate is unique?' do
+    @second_car.license_plate = @car.license_plate
+    assert @second_car.invalid?
   end
 
   test 'car license plate accepts any special character?' do
-    @car.license_plate = /[^-][\W\_]/
-    assert @car.invalid?
+    @chars.each do |chars|
+      @car.license_plate[1] = @car.license_plate[1].replace"#{chars}"
+      assert @car.invalid?
+    end
   end
 # tests for year_of_production validation:
   test 'car year of production can be blank?' do
@@ -200,7 +207,6 @@ class CarTest < ActiveSupport::TestCase
     @car.year_of_production = 'ABCZ'
     assert @car.invalid?
   end
-
 
 # tests for year_of_registration validation?
   test 'car year of registration can be blank?' do
