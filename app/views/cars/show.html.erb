@@ -7,6 +7,7 @@
           <td>Colour</td>
           <td>Vin number</td>
           <td>License plate</td>
+          <td>Registration country</td>
           <td>Production at</td>
           <td>Registration at</td>
           <td>Action</td>
@@ -16,6 +17,7 @@
           <td><%= @car.colour %></td>
           <td><%= @car.vin_number %></td>
           <td><%= @car.license_plate %></td>
+          <td><%= @car.registration_country %></td>
           <td><%= @car.year_of_production %></td>
           <td><%= @car.year_of_registration %></td>
           <td><%= link_to 'Back', :back, class: "text-dark" %> | <%= link_to 'delete', car_path(@car), method: :delete, class: "text-dark" %> | <%= link_to 'edit', edit_car_path(@car), class: "text-dark" %> </td>

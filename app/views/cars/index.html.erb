@@ -23,6 +23,7 @@
           <th>Colour</th>
           <th>Vin number</th>
           <th>License plate</th>
+          <th>Registration country</th>
           <th>Year of production</th>
           <th>Year of registration</th>
           <th>Action</th>
@@ -34,6 +35,7 @@
             <td><%= car.colour %></td>
             <td><%= car.vin_number %></td>
             <td><%= car.license_plate %></td>
+            <td><%= car.registration_country %></td>
             <td><%= car.year_of_production %></td>
             <td><%= car.year_of_registration %></td>
             <td><%= link_to 'show', car_path(car), class: "text-dark" %> | <%= link_to 'delete', car_path(car), method: :delete, class: "text-dark" %> | <%= link_to 'edit', edit_car_path(car), class: "text-dark" %></td>
