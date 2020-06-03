@@ -4,7 +4,8 @@ class CarTest < ActiveSupport::TestCase
   def setup
     @car = cars(:first_car)
     @second_car = cars(:second_car)
-    @chars = '!','@','#','$','%',"'",'^','&','*','(',')','_','+','{','}','|',':','"','>','?','<','[',']','|','=',';','.','~',"`",","
+    @chars = '!', '@', '#', '$', '%', "'", '^', '&', '*', '(', ')', '_', '+', '{', '}',
+             '|', ':', '"', '>', '?', '<', '[', ']', '|', '=', ';', '.', '~', "`", ","
   end
 
   test 'checking validation cars data from fixtures' do
@@ -44,7 +45,7 @@ class CarTest < ActiveSupport::TestCase
 
   test 'car name accepts any special character except dash' do
     @chars.each do |chars|
-      @car.name[1] = @car.name[1].replace"#{chars}"
+      @car.name[1] = @car.name[1].replace "#{chars}"
       assert @car.invalid?
     end
   end
@@ -81,11 +82,11 @@ class CarTest < ActiveSupport::TestCase
 
   test 'car colour accepts any special character except dash?' do
     @chars.each do |chars|
-      @car.colour[1] = @car.colour[1].replace"#{chars}"
+      @car.colour[1] = @car.colour[1].replace "#{chars}"
       assert @car.invalid?
     end
   end
-# tests for vin_number validation:
+  # tests for vin_number validation:
   test 'car vin number can be blank?' do
     @car.vin_number = ''
     assert @car.invalid?
@@ -115,7 +116,7 @@ class CarTest < ActiveSupport::TestCase
     @car.vin_number = /[\W\_]/
     assert @car.invalid?
   end
-# tests for license_plate validation:
+  # tests for license_plate validation:
   test 'car license plate can be blank?' do
     @car.license_plate = ''
     assert @car.invalid?
