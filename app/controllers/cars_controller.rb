@@ -13,7 +13,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-    
+
     if @car.save
       flash[:notice] = 'Successfully created.'
       redirect_to cars_path
@@ -53,6 +53,7 @@ class CarsController < ApplicationController
       :colour,
       :vin_number,
       :license_plate,
+      :registration_country,
       :year_of_production,
       :year_of_registration
     )

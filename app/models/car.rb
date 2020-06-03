@@ -13,6 +13,8 @@ class Car < ApplicationRecord
                             uniqueness: true,
                             length: { is: 8 }
 
+  validates :registration_country, presence: true
+
   validates :year_of_production, numericality: true,
                                  length: { is: 4 },
                                  inclusion: { in: 1900..Time.now.year }
