@@ -208,7 +208,7 @@ class CarTest < ActiveSupport::TestCase
     assert @car.invalid?
   end
 
-# tests for year_of_registration validation?
+  # tests for year_of_registration validation:
   test 'car year of registration can be blank?' do
     @car.year_of_registration = ''
     assert @car.invalid?
@@ -236,6 +236,11 @@ class CarTest < ActiveSupport::TestCase
 
   test 'car year of registration should be a numeric?' do
     @car.year_of_registration = 'ABCZ'
+    assert @car.invalid?
+  end
+# test for registation_country validation:
+  test 'car registration country can be blank?' do
+    @car.registration_country = ''
     assert @car.invalid?
   end
 end
