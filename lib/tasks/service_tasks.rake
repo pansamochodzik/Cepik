@@ -7,6 +7,7 @@ namespace :initial_setup do
         colour: Faker::Vehicle.color,
         vin_number: Faker::Vehicle.vin,
         license_plate: Faker::Vehicle.license_plate,
+        registration_country: Faker::Address.country_code,
         year_of_production: @year_of_production = Faker::Vehicle.year,
         year_of_registration: @year_of_production
       )
