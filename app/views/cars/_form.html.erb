@@ -1,8 +1,8 @@
 <%= form_with model: @car, local: true do |form| %>
 <div class="row">
-    <div class="col-2">
+    <div class="col-1">
     </div>
-    <div class="col-4">
+    <div class="col-5">
       <p>
         <%= form.label :name %>
         <%= form.text_field :name %>
@@ -18,6 +18,10 @@
       <p>
         <%= form.label :license_plate %>
         <%= form.text_field :license_plate %>
+      </p>
+      <p>
+        <%= form.label :registration_country %>
+        <%= form.collection_select :registration_country, Country.all, :country_code, :country, prompt: 'Select Country', priority_countries: ['Poland','DE'] %>
       </p>
       <p>
         <%= form.label :year_of_production %>
