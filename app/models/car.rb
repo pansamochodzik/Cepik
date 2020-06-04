@@ -1,4 +1,6 @@
 class Car < ApplicationRecord
+  belongs_to :country, optional: true
+
   validates :name, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
                    length: {minimum: 1, maximum: 15}
 
@@ -13,7 +15,7 @@ class Car < ApplicationRecord
                             uniqueness: true,
                             length: { is: 8 }
 
-  validates :registration_country, presence: true
+  validates :registration_country, presence: true, on: :create
 
   validates :year_of_production, numericality: true,
                                  length: { is: 4 },
