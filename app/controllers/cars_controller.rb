@@ -13,9 +13,12 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-    
+
     if @car.save
       flash[:notice] = 'Successfully created.'
+      @car.identification_name = @car.name + '_' + @car.year_of_production.to_s + '_' + @car.vin_number
+      @car.save
+      binding.pry
       redirect_to cars_path
     else
       render :new
