@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_06_04_114526) do
     t.integer "year_of_production"
     t.integer "year_of_registration"
     t.string "registration_country"
-    t.string "identification_name"
+    t.string "name_id"
     t.index ["license_plate"], name: "index_cars_on_license_plate", unique: true
     t.index ["vin_number"], name: "index_cars_on_vin_number", unique: true
   end

@@ -9,7 +9,7 @@ namespace :initial_setup do
         license_plate: Faker::Vehicle.license_plate,
         year_of_production: year_of_production = Faker::Vehicle.year,
         year_of_registration: year_of_production,
-        identification_name: name + '_' + year_of_production.to_s + '_' + vin_number
+        name_id: name + '_' + year_of_production.to_s + '_' + vin_number
       )
     end
     p "Created #{Car.count} cars"
