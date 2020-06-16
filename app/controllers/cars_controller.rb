@@ -14,9 +14,7 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
 
-    if @car.valid?
-      @car.name_id = @car.name + '_' + @car.year_of_production.to_s + '_' + @car.vin_number
-      @car.save
+    if @car.save
       flash[:notice] = 'Successfully created.'
       redirect_to cars_path
     else
@@ -39,9 +37,7 @@ class CarsController < ApplicationController
   def update
     @car = Car.find(params[:id])
 
-    if @car.valid?
-      @car.name_id = @car.name + '_' + @car.year_of_production.to_s + '_' + @car.vin_number
-      @car.update(car_params)
+    if @car.update(car_params)
       flash[:notice] = 'Successfully updated.'
       redirect_to cars_path
     else
@@ -53,7 +49,7 @@ class CarsController < ApplicationController
 
   def car_params
     params.require(:car).permit(
-      :name,
+      :brand,
       :colour,
       :vin_number,
       :license_plate,

@@ -1,5 +1,5 @@
 class Car < ApplicationRecord
-  validates :name, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
+  validates :brand, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
                    length: {minimum: 1, maximum: 15}
 
   validates :colour, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
@@ -20,4 +20,14 @@ class Car < ApplicationRecord
   validates :year_of_registration, numericality: true,
                                    length: { is: 4 },
                                    inclusion: { in: 1900..Time.now.year }
+
+  validates :name, presence: true
+
+  before_validation :create_name, on: [ :create, :update ]
+
+private
+
+  def create_name
+    self.name =  "#{brand}_#{year_of_production}_#{vin_number}"
+  end
 end
