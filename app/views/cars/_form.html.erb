@@ -21,7 +21,8 @@
       </p>
       <p>
         <%= form.label :registration_country %>
-        <%= form.collection_select :registration_country, Country.all, :country_code, :country, prompt: 'Select Country' %>
+        <%= form.collection_select :registration_country, Country.alphabetically,
+                                   :country_code, :country, prompt: 'Select Country' %>
       </p>
       <p>
         <%= form.label :year_of_production %>

@@ -35,10 +35,20 @@
             <td><%= car.colour %></td>
             <td><%= car.vin_number %></td>
             <td><%= car.license_plate %></td>
-            <td><%= car.registration_country %></td>
+            <td>
+              <% if !car.registration_country.blank? %>
+                <%= Country.where(country_code: car.registration_country).map{|full_name| full_name.country}.join(", ") %>
+              <% else %>
+                <p>Please Complete Data</p>
+              <% end %>
+            </td>
             <td><%= car.year_of_production %></td>
-            <td><%= car.year_of_registration %></td>
-            <td><%= link_to 'show', car_path(car), class: "text-dark" %> | <%= link_to 'delete', car_path(car), method: :delete, class: "text-dark" %> | <%= link_to 'edit', edit_car_path(car), class: "text-dark" %></td>
+            <td><%= car.year_of_registration %>
+            </td>
+            <td><%= link_to 'Show', car_path(car), class: "text-dark" %> |
+              <%= link_to 'Delete', car_path(car), method: :delete, class: "text-dark" %> |
+              <%= link_to 'Edit', edit_car_path(car), class: "text-dark" %>
+            </td>
           </tbody>
         <% end %>
       </table>
