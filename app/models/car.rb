@@ -1,5 +1,5 @@
 class Car < ApplicationRecord
-  belongs_to :country, optional: true
+  has_one :country
 
   validates :name, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
                    length: {minimum: 1, maximum: 15}
@@ -15,7 +15,8 @@ class Car < ApplicationRecord
                             uniqueness: true,
                             length: { is: 8 }
 
-  validates :registration_country, presence: true, on: :create
+  validates :registration_country, format: { with: /\A[A-Z]+\z/ },
+                                   length: { is: 2 }
 
   validates :year_of_production, numericality: true,
                                  length: { is: 4 },
@@ -24,4 +25,10 @@ class Car < ApplicationRecord
   validates :year_of_registration, numericality: true,
                                    length: { is: 4 },
                                    inclusion: { in: 1900..Time.now.year }
+
+  def registration_country_validator
+    if registration_country.blank? || !registration_country.match(/\A[A-Z]+\z/) || !registration_country.length.in?(is: 2)
+      self.errors.add(:registration_country)
+    end
+  end
 end
