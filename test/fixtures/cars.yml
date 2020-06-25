@@ -1,16 +1,16 @@
 first_car:
-  name: 'Mercedes-Benz'
-  colour: 'Gray-Metallic'
-  vin_number: 'ASDFGHJKL12345671'
-  license_plate: 'WH-AWMA1'
-  registration_country: 'DE'
+  name: Mercedes-Benz
+  colour: Gray-Metallic
+  vin_number: ASDFGHJKL12345671
+  license_plate: WH-AWMA1
+  registration_country: PL
   year_of_production: 2012
   year_of_registration: 2012
 second_car:
-  name: 'Mercedes-Benz'
-  colour: 'Gray-Metallic'
-  vin_number: 'ASDFGHJKL12345672'
-  license_plate: 'WHA-WMA2'
-  registration_country: 'PL'
+  name: Mercedes-Benz
+  colour: Gray-Metallic
+  vin_number: ASDFGHJKL12345672
+  license_plate: WHA-WMA2
+  registration_country: DE
   year_of_production: 2012
   year_of_registration: 2012
