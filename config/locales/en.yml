@@ -12,6 +12,8 @@ en:
               invalid: can only include capital letters and numbers.
             license_plate:
               invalid: can only include capital letters, numbers and hyphen not space. Cannot be blank.
+            registration_country:
+              invalid: must be chosen.
             year_of_production:
               inclusion: should be between 1900 and the current year.
               not_a_number: cannot be blank.
