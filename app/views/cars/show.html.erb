@@ -18,7 +18,7 @@
           <td><%= @car.vin_number %></td>
           <td><%= @car.license_plate %></td>
           <td>
-            <% if !@car.registration_country.blank? %>
+            <% if @car.registration_country.present? %>
               <%= Country.where(country_code: @car.registration_country).map{|full_name| full_name.country}.join(", ") %>
             <% else %>
               <p>Please Complete Data</p>
