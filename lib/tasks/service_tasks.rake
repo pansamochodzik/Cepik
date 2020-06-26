@@ -18,7 +18,7 @@ namespace :initial_setup do
     p 'Creating cars names'
     Car.where(name: nil).each do |car|
       car.name = "#{car.brand}_#{car.year_of_production}_#{car.vin_number}"
-      car.save
+      car.update
     end
     p "Created cars names"
   end
