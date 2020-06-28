@@ -8,7 +8,7 @@ namespace :initial_setup do
         vin_number: Faker::Vehicle.vin,
         license_plate: Faker::Vehicle.license_plate,
         year_of_production: year_of_production = Faker::Vehicle.year,
-        year_of_registration: year_of_production,
+        year_of_registration: year_of_production
       )
     end
     p "Created #{Car.count} cars"
@@ -20,6 +20,6 @@ namespace :initial_setup do
       car.name = "#{car.brand}_#{car.year_of_production}_#{car.vin_number}"
       car.update
     end
-    p "Created cars names"
+    p 'Created cars names'
   end
 end
