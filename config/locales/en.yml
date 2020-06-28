@@ -35,7 +35,7 @@ en:
       models:
         car:
           attributes:
-            name:
+            brand:
               invalid: 'can only include letters and hyphen. Cannot be blank. For example: Mercedes-Benz.'
             colour:
               invalid: 'can only include letters and hyphen. Cannot be blank. For example: Gray-Metallic.'

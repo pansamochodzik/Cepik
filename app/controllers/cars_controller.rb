@@ -13,7 +13,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-    
+
     if @car.save
       flash[:notice] = 'Successfully created.'
       redirect_to cars_path
@@ -49,7 +49,7 @@ class CarsController < ApplicationController
 
   def car_params
     params.require(:car).permit(
-      :name,
+      :brand,
       :colour,
       :vin_number,
       :license_plate,

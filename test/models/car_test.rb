@@ -11,40 +11,40 @@ class CarTest < ActiveSupport::TestCase
     assert @car.valid?
     assert @second_car.valid?
   end
-# tests for name validation:
-  test 'car name can be blank?' do
-    @car.name = ''
+# tests for brand validation:
+  test 'car brand can be blank?' do
+    @car.brand = ''
     assert @car.invalid?
   end
 
-  test 'car name can have more than 15 characters?' do
-    @car.name = 'abcdefghijklmnop'
+  test 'car brand can have more than 15 characters?' do
+    @car.brand = 'abcdefghijklmnop'
     assert @car.invalid?
   end
 
-  test 'car name can have numbers?' do
-    @car.name = 'Honda666'
+  test 'car brand can have numbers?' do
+    @car.brand = 'Honda666'
     assert @car.invalid?
   end
 
-  test 'car name can have spaces?' do
-    @car.name = 'Aston Martin'
+  test 'car brand can have spaces?' do
+    @car.brand = 'Aston Martin'
     assert @car.invalid?
   end
 
-  test 'car name can have dash as the first character?' do
-    @car.name = '-Aston-Martin'
+  test 'car brand can have dash as the first character?' do
+    @car.brand = '-Aston-Martin'
     assert @car.invalid?
   end
 
-  test 'car name can have dash as the last character?' do
-    @car.name = 'Aston-Martin-'
+  test 'car brand can have dash as the last character?' do
+    @car.brand = 'Aston-Martin-'
     assert @car.invalid?
   end
 
-  test 'car name accepts any special character except dash' do
+  test 'car brand accepts any special character except dash' do
     @chars.each do |chars|
-      @car.name[1] = @car.name[1].replace"#{chars}"
+      @car.brand[1] = @car.brand[1].replace"#{chars}"
       assert @car.invalid?
     end
   end
@@ -208,7 +208,7 @@ class CarTest < ActiveSupport::TestCase
     assert @car.invalid?
   end
 
-# tests for year_of_registration validation?
+# tests for year_of_registration validation:
   test 'car year of registration can be blank?' do
     @car.year_of_registration = ''
     assert @car.invalid?
@@ -236,6 +236,11 @@ class CarTest < ActiveSupport::TestCase
 
   test 'car year of registration should be a numeric?' do
     @car.year_of_registration = 'ABCZ'
+    assert @car.invalid?
+  end
+  #test for name validation:
+  test 'car name can be blank?' do
+    @car.name = ''
     assert @car.invalid?
   end
 end

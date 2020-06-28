@@ -19,7 +19,7 @@
       <table class="table">
         <thead class="bg-info text-light">
           <th>No.</th>
-          <th>Name</th>
+          <th>Brand</th>
           <th>Colour</th>
           <th>Vin number</th>
           <th>License plate</th>
@@ -30,7 +30,7 @@
         <% @cars.each.with_index(1) do |car, index| %>
           <tbody class="bg-warning">
             <td><%= index %></td>
-            <td><%= link_to car.name, car_path(car), class: "text-dark" %></td>
+            <td><%= link_to car.brand, car_path(car), class: "text-dark" %></td>
             <td><%= car.colour %></td>
             <td><%= car.vin_number %></td>
             <td><%= car.license_plate %></td>
