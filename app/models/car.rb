@@ -15,7 +15,7 @@ class Car < ApplicationRecord
                             uniqueness: true,
                             length: { is: 8 }
 
-  validate :registration_country_validator
+  # validate :registration_country_validator
 
   validates :year_of_production, numericality: true,
                                  length: { is: 4 },

@@ -29,15 +29,19 @@
           <th>Action</th>
         </thead>
         <% @cars.each.with_index(1) do |car, index| %>
-          <tbody class="bg-warning">
+          <% if car.registration_country.present? %>
+            <tbody class="bg-warning">
+          <% else %>
+            <tbody class="bg-danger">
+          <% end %>
             <td><%= index %></td>
             <td><%= link_to car.name, car_path(car), class: "text-dark" %></td>
             <td><%= car.colour %></td>
             <td><%= car.vin_number %></td>
             <td><%= car.license_plate %></td>
             <td>
-              <% if !car.registration_country.blank? %>
-                <%= Country.where(country_code: car.registration_country).map{|full_name| full_name.country}.join(", ") %>
+              <% if car.registration_country.present? %>
+                <%= Country.find_by(country_code: car.registration_country).country %>
               <% else %>
                 <p>Please Complete Data</p>
               <% end %>

@@ -12,14 +12,18 @@
           <td>Registration at</td>
           <td>Action</td>
         </thead>
-        <tbody class="bg-warning">
+        <% if @car.registration_country.present? %>
+          <tbody class="bg-warning">
+        <% else %>
+          <tbody class="bg-danger">
+        <% end %>
           <td><%= @car.name %></td>
           <td><%= @car.colour %></td>
           <td><%= @car.vin_number %></td>
           <td><%= @car.license_plate %></td>
           <td>
             <% if @car.registration_country.present? %>
-              <%= Country.where(country_code: @car.registration_country).map{|full_name| full_name.country}.join(", ") %>
+                <%= Country.find_by(country_code: @car.registration_country).country %>
             <% else %>
               <p>Please Complete Data</p>
             <% end %>
