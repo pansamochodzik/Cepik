@@ -6,6 +6,7 @@ first_car:
   registration_country: PL
   year_of_production: 2012
   year_of_registration: 2012
+  name: 'Mercedes-Benz_2012_ASDFGHJKL12345671'
 second_car:
   name: Mercedes-Benz
   colour: Gray-Metallic

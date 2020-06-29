@@ -1,7 +1,9 @@
 class Car < ApplicationRecord
   has_one :country
 
-  validates :name, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
+  before_validation :create_name, on: [ :create, :update ]
+
+  validates :brand, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
                    length: {minimum: 1, maximum: 15}
 
   validates :colour, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
@@ -25,9 +27,16 @@ class Car < ApplicationRecord
                                    length: { is: 4 },
                                    inclusion: { in: 1900..Time.now.year }
 
+  validates :name, presence: true
+
+private
   def registration_country_validator
     if registration_country.blank? || !registration_country.match(/\A[A-Z]+\z/) || !registration_country.length.in?(is: 2)
       self.errors.add(:registration_country)
     end
+  end
+  
+  def create_name
+    self.name =  "#{brand}_#{year_of_production}_#{vin_number}"
   end
 end
