@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUniqueIndexToCountriesTable < ActiveRecord::Migration[5.2]
   def change
     add_index :countries, :country, unique: true

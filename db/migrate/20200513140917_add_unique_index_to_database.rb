@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUniqueIndexToDatabase < ActiveRecord::Migration[5.2]
   def change
     add_index :cars, :vin_number, unique: true

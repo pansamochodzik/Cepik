@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class CarTest < ActiveSupport::TestCase
   def setup
     @car = cars(:first_car)
     @second_car = cars(:second_car)
-    @chars = '!', '@', '#', '$', '%', "'", '^', '&', '*', '(', ')', '_', '+', '{', '}',
-             '|', ':', '"', '>', '?', '<', '[', ']', '|', '=', ';', '.', '~', "`", ","
+    @chars = %w(! @ # $ % ' ^ & * ( ) _ + { } | : " > ? < [ ] | = ; . ~ ` ,)
   end
 
   test 'checking validation cars data from fixtures' do
     assert @car.valid?
     assert @second_car.valid?
   end
-# tests for brand validation:
+
+  # tests for brand validation:
   test 'car brand can be blank?' do
     @car.brand = ''
     assert @car.invalid?
@@ -44,17 +46,18 @@ class CarTest < ActiveSupport::TestCase
   end
 
   test 'car brand accepts any special character except dash' do
-    @chars.each do |chars|
-      @car.brand[1] = @car.brand[1].replace"#{chars}"
+    @chars.each do |char|
+      @car.brand[1] = @car.brand[1].replace char.to_s
       assert @car.invalid?
     end
   end
 
-  test 'car name can be the same for many cars?' do
-    @second_car.name = @car.name
+  test 'car brand can be the same for many cars?' do
+    @second_car.brand = @car.brand
     assert @second_car.valid?
   end
-# tests for colour validation:
+
+  # tests for colour validation:
   test 'car colour can be blank?' do
     @car.colour = ''
     assert @car.invalid?
@@ -86,8 +89,8 @@ class CarTest < ActiveSupport::TestCase
   end
 
   test 'car colour accepts any special character except dash?' do
-    @chars.each do |chars|
-      @car.colour[1] = @car.colour[1].replace "#{chars}"
+    @chars.each do |char|
+      @car.colour[1] = @car.colour[1].replace char.to_s
       assert @car.invalid?
     end
   end
@@ -96,6 +99,7 @@ class CarTest < ActiveSupport::TestCase
     @second_car.colour = @car.colour
     assert @second_car.valid?
   end
+
   # tests for vin_number validation:
   test 'car vin number can be blank?' do
     @car.vin_number = ''
@@ -124,10 +128,11 @@ class CarTest < ActiveSupport::TestCase
 
   test 'car vin number accepts any special character?' do
     @chars.each do |chars|
-      @car.vin_number[1] = @car.vin_number[1].replace"#{chars}"
+      @car.vin_number[1] = @car.vin_number[1].replace chars.to_s
       assert @car.invalid?
     end
   end
+
   # tests for license_plate validation:
   test 'car license plate can be blank?' do
     @car.license_plate = ''
@@ -186,11 +191,12 @@ class CarTest < ActiveSupport::TestCase
 
   test 'car license plate accepts any special character?' do
     @chars.each do |chars|
-      @car.license_plate[1] = @car.license_plate[1].replace"#{chars}"
+      @car.license_plate[1] = @car.license_plate[1].replace chars.to_s
       assert @car.invalid?
     end
   end
-# tests for year_of_production validation:
+
+  # tests for year_of_production validation:
   test 'car year of production can be blank?' do
     @car.year_of_production = ''
     assert @car.invalid?
@@ -221,7 +227,7 @@ class CarTest < ActiveSupport::TestCase
     assert @car.invalid?
   end
 
-# tests for year_of_registration validation:
+  # tests for year_of_registration validation:
   test 'car year of registration can be blank?' do
     @car.year_of_registration = ''
     assert @car.invalid?
@@ -251,46 +257,58 @@ class CarTest < ActiveSupport::TestCase
     @car.year_of_registration = 'ABCZ'
     assert @car.invalid?
   end
-  #test for name validation:
-  test 'car name can be blank?' do
-    @car.name = ''
-    assert @car.invalid?
-  end
-# test for registation_country validation:
-  test 'car registration country can be blank?' do
-    @car.registration_country = ''
-    assert @car.invalid?
-  end
+  # test for registation_country validation:
+  # test 'car registration country can be blank?' do
+  #   @car.registration_country = ''
+  #   assert @car.invalid?
+  # end
+  #
+  # test 'car registration country can have small letters?' do
+  #   @car.registration_country = 'aB'
+  #   assert @car.invalid?
+  # end
+  #
+  # test 'car registration country can have any numbers?' do
+  #   @car.registration_country = 'A4'
+  #   assert @car.invalid?
+  # end
+  #
+  # test 'car registration country accepts any special character?' do
+  #   @chars.each do |chars|
+  #     @car.registration_country[1] = @car.registration_country[1].replace"#{chars}"
+  #     assert @car.invalid?
+  #   end
+  # end
+  #
+  # test 'car registration country can have lass than 2 characters?' do
+  #   @car.registration_country = 'A'
+  #   assert @car.invalid?
+  # end
+  #
+  # test 'car registration country can have more than 2 characters?' do
+  #   @car.registration_country = 'ABC'
+  #   assert @car.invalid?
+  # end
+  #
+  # test 'car registration country can be the same for many cars?' do
+  #   @second_car.registration_country = @car.registration_country
+  #   assert @second_car.valid?
+  # end
 
-  test 'car registration country can have small letters?' do
-    @car.registration_country = 'aB'
-    assert @car.invalid?
-  end
+  # test for name presents:
 
-  test 'car registration country can have any numbers?' do
-    @car.registration_country = 'A4'
-    assert @car.invalid?
-  end
+  test 'autogenerate car name' do
+    car = Car.create!(
+      brand: 'Mercedes-Benz',
+      colour: 'Gray-Metallic',
+      vin_number: 'ASDFFHJKL12345672',
+      license_plate: 'WHA-WOA2',
+      registration_country: 'DE',
+      year_of_production: 2012,
+      year_of_registration: 2012,
+      name: nil
+    )
 
-  test 'car registration country accepts any special character?' do
-    @chars.each do |chars|
-      @car.registration_country[1] = @car.registration_country[1].replace"#{chars}"
-      assert @car.invalid?
-    end
-  end
-
-  test 'car registration country can have lass than 2 characters?' do
-    @car.registration_country = 'A'
-    assert @car.invalid?
-  end
-
-  test 'car registration country can have more than 2 characters?' do
-    @car.registration_country = 'ABC'
-    assert @car.invalid?
-  end
-
-  test 'car registration country can be the same for many cars?' do
-    @second_car.registration_country = @car.registration_country
-    assert @second_car.valid?
+    assert_equal 'Mercedes-Benz_2012_ASDFFHJKL12345672', car.name
   end
 end

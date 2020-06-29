@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangingColumnsNamesAndDatatypes < ActiveRecord::Migration[5.2]
   def change
     change_column :cars, :production_at, 'integer USING CAST(production_at AS integer)'

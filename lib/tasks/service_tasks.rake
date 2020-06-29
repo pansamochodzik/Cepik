@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :initial_setup do
   task cars: :environment do
     p 'Creating Cars'
@@ -22,16 +24,16 @@ namespace :initial_setup do
       car.update
     end
     p 'Created cars names'
-    
+  end
+
   task countries: :environment do
     require 'csv'
     p 'Created countries'
     CSV.foreach(Rails.root.join('lib/csv_files/countries.csv')) do |row|
-
       Country.create({
-        country: row[0],
-        country_code: row[1]
-        })
+                       country: row[0],
+                       country_code: row[1]
+                     })
     end
     p "Created #{Country.count} countries"
   end

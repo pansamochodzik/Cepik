@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'csv'
 require 'database_cleaner'
 
@@ -23,9 +25,9 @@ p 'Created countries'
 
 CSV.foreach(Rails.root.join('lib/csv_files/countries.csv')) do |row|
   Country.create({
-    country: row[0],
-    country_code: row[1]
-    })
+                   country: row[0],
+                   country_code: row[1]
+                 })
 end
 
 p "Created #{Country.count} countries"
