@@ -41,7 +41,7 @@
             <td><%= car.license_plate %></td>
             <td>
               <% if car.registration_country.present? %>
-                <%= Country.find_by(country_code: car.registration_country).country %>
+                <%= @country.find_by(country_code: car.registration_country).country %>
               <% else %>
                 <p>Please Complete Data</p>
               <% end %>
