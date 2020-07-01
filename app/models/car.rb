@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Car < ApplicationRecord
-  belongs_to :country
-
   before_save :create_name
+
+  belongs_to :country
 
   validates :brand, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
                     length: { minimum: 1, maximum: 15 }
@@ -18,8 +18,6 @@ class Car < ApplicationRecord
   validates :license_plate, format: { with: /\A[A-Z0-9]{2,3}[\-][A-Z0-9]{4,5}\z/ },
                             uniqueness: true,
                             length: { is: 8 }
-
-  validates :country_id, in: @countries
 
   validates :year_of_production, numericality: true,
                                  length: { is: 4 },

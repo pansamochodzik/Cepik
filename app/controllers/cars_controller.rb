@@ -21,6 +21,7 @@ class CarsController < ApplicationController
       flash[:notice] = 'Successfully created.'
       redirect_to cars_path
     else
+      @countries = Country.alphabetically.map { |country| [country.name, country.id] }
       render :new
     end
   end
@@ -45,6 +46,7 @@ class CarsController < ApplicationController
       flash[:notice] = 'Successfully updated.'
       redirect_to cars_path
     else
+      @countries = Country.alphabetically.map { |country| [country.name, country.id] }
       render :edit
     end
   end
