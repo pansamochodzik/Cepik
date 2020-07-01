@@ -1,11 +1,15 @@
+# frozen_string_literal: true
+
 class Car < ApplicationRecord
-  before_validation :create_name, on: [ :create, :update ]
+  belongs_to :country
+
+  before_save :create_name
 
   validates :brand, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
-                   length: {minimum: 1, maximum: 15}
+                    length: { minimum: 1, maximum: 15 }
 
   validates :colour, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
-                     length: {minimum: 1, maximum: 20}
+                     length: { minimum: 1, maximum: 20 }
 
   validates :vin_number, uniqueness: true,
                          length: { is: 17 },
@@ -15,6 +19,8 @@ class Car < ApplicationRecord
                             uniqueness: true,
                             length: { is: 8 }
 
+  validates :country_id, in: @countries
+
   validates :year_of_production, numericality: true,
                                  length: { is: 4 },
                                  inclusion: { in: 1900..Time.now.year }
@@ -23,11 +29,9 @@ class Car < ApplicationRecord
                                    length: { is: 4 },
                                    inclusion: { in: 1900..Time.now.year }
 
-  validates :name, presence: true
-
-private
+  private
 
   def create_name
-    self.name =  "#{brand}_#{year_of_production}_#{vin_number}"
+    self.name = "#{brand}_#{year_of_production}_#{vin_number}"
   end
 end
