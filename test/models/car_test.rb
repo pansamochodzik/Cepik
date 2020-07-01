@@ -4,8 +4,8 @@ require 'test_helper'
 
 class CarTest < ActiveSupport::TestCase
   def setup
-    @car = cars(:first_car)
-    @second_car = cars(:second_car)
+    @car = cars(:mercedes)
+    @second_car = cars(:toyota)
     @chars = %w(! @ # $ % ' ^ & * ( ) _ + { } | : " > ? < [ ] | = ; . ~ ` ,)
   end
 
@@ -257,53 +257,15 @@ class CarTest < ActiveSupport::TestCase
     @car.year_of_registration = 'ABCZ'
     assert @car.invalid?
   end
-  # test for registation_country validation:
-  # test 'car registration country can be blank?' do
-  #   @car.registration_country = ''
-  #   assert @car.invalid?
-  # end
-  #
-  # test 'car registration country can have small letters?' do
-  #   @car.registration_country = 'aB'
-  #   assert @car.invalid?
-  # end
-  #
-  # test 'car registration country can have any numbers?' do
-  #   @car.registration_country = 'A4'
-  #   assert @car.invalid?
-  # end
-  #
-  # test 'car registration country accepts any special character?' do
-  #   @chars.each do |chars|
-  #     @car.registration_country[1] = @car.registration_country[1].replace"#{chars}"
-  #     assert @car.invalid?
-  #   end
-  # end
-  #
-  # test 'car registration country can have lass than 2 characters?' do
-  #   @car.registration_country = 'A'
-  #   assert @car.invalid?
-  # end
-  #
-  # test 'car registration country can have more than 2 characters?' do
-  #   @car.registration_country = 'ABC'
-  #   assert @car.invalid?
-  # end
-  #
-  # test 'car registration country can be the same for many cars?' do
-  #   @second_car.registration_country = @car.registration_country
-  #   assert @second_car.valid?
-  # end
 
   # test for name presents:
-
   test 'autogenerate car name' do
     car = Car.create!(
       brand: 'Mercedes-Benz',
       colour: 'Gray-Metallic',
       vin_number: 'ASDFFHJKL12345672',
       license_plate: 'WHA-WOA2',
-      registration_country: 'DE',
+      country_id: @car.country_id,
       year_of_production: 2012,
       year_of_registration: 2012,
       name: nil

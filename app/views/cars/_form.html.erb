@@ -20,9 +20,8 @@
         <%= form.text_field :license_plate %>
       </p>
       <p>
-        <%= form.label :registration_country %>
-        <%= form.collection_select :registration_country, Country.alphabetically,
-                                   :country_code, :country, prompt: 'Select Country' %>
+        <%= form.label 'Registration country' %>
+        <%= form.select :country_id, options_for_select(@countries)  %>
       </p>
       <p>
         <%= form.label :year_of_production %>

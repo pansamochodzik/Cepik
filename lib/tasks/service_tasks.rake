@@ -9,7 +9,7 @@ namespace :initial_setup do
         colour: Faker::Vehicle.color,
         vin_number: Faker::Vehicle.vin,
         license_plate: Faker::Vehicle.license_plate,
-        registration_country: 'PL',
+        country_id: Random.rand(1..225),
         year_of_production: year_of_production = Faker::Vehicle.year,
         year_of_registration: year_of_production
       )
@@ -31,8 +31,8 @@ namespace :initial_setup do
     p 'Created countries'
     CSV.foreach(Rails.root.join('lib/csv_files/countries.csv')) do |row|
       Country.create({
-                       country: row[0],
-                       country_code: row[1]
+                       name: row[0],
+                       code: row[1]
                      })
     end
     p "Created #{Country.count} countries"

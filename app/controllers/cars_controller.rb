@@ -11,6 +11,7 @@ class CarsController < ApplicationController
 
   def new
     @car = Car.new
+    @countries = Country.alphabetically.map { |country| [country.name, country.id] }
   end
 
   def create
@@ -34,6 +35,7 @@ class CarsController < ApplicationController
 
   def edit
     @car = Car.find(params[:id])
+    @countries = Country.alphabetically.map { |country| [country.name, country.id] }
   end
 
   def update
@@ -55,7 +57,7 @@ class CarsController < ApplicationController
       :colour,
       :vin_number,
       :license_plate,
-      :registration_country,
+      :country_id,
       :year_of_production,
       :year_of_registration
     )

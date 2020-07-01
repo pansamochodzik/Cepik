@@ -1,18 +1,18 @@
-first_car:
+mercedes:
   brand: Mercedes-Benz
   colour: Gray-Metallic
   vin_number: ASDFGHJKL12345671
   license_plate: WH-AWMA1
-  registration_country: PL
+  country: poland
   year_of_production: 2012
   year_of_registration: 2012
   name: Mercedes-Benz_2012_ASDFGHJKL12345671
-second_car:
-  brand: Mercedes-Benz
+toyota:
+  brand: Toyota
   colour: Gray-Metallic
   vin_number: ASDFGHJKL12345672
   license_plate: WHA-WMA2
-  registration_country: DE
+  country: germany
   year_of_production: 2012
   year_of_registration: 2012
   name: Mercedes-Benz_2012_ASDFGHJKL12345672

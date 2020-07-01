@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Car < ApplicationRecord
-  has_one :country
+  belongs_to :country
 
   before_save :create_name
 
@@ -19,7 +19,7 @@ class Car < ApplicationRecord
                             uniqueness: true,
                             length: { is: 8 }
 
-  # validate :registration_country_validator
+  validates :country_id, in: @countries
 
   validates :year_of_production, numericality: true,
                                  length: { is: 4 },
@@ -29,21 +29,9 @@ class Car < ApplicationRecord
                                    length: { is: 4 },
                                    inclusion: { in: 1900..Time.now.year }
 
-  #validates :name, presence: true
-
   private
-
-  def registration_country_validator
-    if registration_country.blank? || !registration_country.match(/\A[A-Z]+\z/) || !registration_country.length.in?(is: 2)
-      errors.add(:registration_country)
-    end
-  end
 
   def create_name
     self.name = "#{brand}_#{year_of_production}_#{vin_number}"
-  end
-
-  def name_nil?
-    self.nil?
   end
 end
