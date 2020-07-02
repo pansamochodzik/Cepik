@@ -37,4 +37,12 @@ namespace :initial_setup do
     end
     p "Created #{Country.count} countries"
   end
+
+  task add_user: :environment do
+    User.create!(
+      email: 'tomasz.adach@gemisoft.pl',
+      password: 'password',
+      password_confirmed: 'password'
+    )
+  end
 end

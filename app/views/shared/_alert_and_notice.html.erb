@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <% if flash[:notice] %>
+        <div class="alert alert-success text-center m-auto alert-dismissible fade show" role="notice">
+          <h2><%= notice %></h2>
+          <button type="button" class="close mt-2 mr-2" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-warning text-center m-auto alert-dismissible fade show" role="notice">
+          <h2><%= alert %></h2>
+          <button type="button" class="close mt-2 mr-2" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

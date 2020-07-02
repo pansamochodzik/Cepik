@@ -51,6 +51,7 @@ group :development, :test, :production do
   gem 'faker', '~> 2.11'
   gem 'pry'
   gem 'rubocop', require: false
+  gem 'devise', '~> 4.7', '>= 4.7.2'
 end
 
 group :development do
