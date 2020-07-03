@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 namespace :initial_setup do
+  desc 'Creating random data to cars table'
   task cars: :environment do
     p 'Creating Cars'
     30.times do
@@ -17,35 +18,40 @@ namespace :initial_setup do
     p "Created #{Car.count} cars"
   end
 
+  desc 'Creating car name for old records if they not already have one.'
   task cars_name: :environment do
-    p 'Creating cars names'
+    p 'Creating cars names.'
     Car.where(name: nil).each do |car|
       car.name = "#{car.brand}_#{car.year_of_production}_#{car.vin_number}"
       car.update
     end
-    p 'Created cars names'
+    p 'Created cars names.'
   end
 
+  desc 'Creating countries for countries table.'
   task countries: :environment do
     require 'csv'
-    p 'Created countries'
+    p 'Created countries.'
     CSV.foreach(Rails.root.join('lib/csv_files/countries.csv')) do |row|
-      Country.create({
-                       name: row[0],
-                       code: row[1]
-                     })
+      Country.create(
+        {
+          name: row[0],
+          code: row[1]
+        }
+      )
     end
-    p "Created #{Country.count} countries"
+    p "Created #{Country.count} countries."
   end
 
+  desc 'Creating new user.'
   task add_user: :environment do
-    user = User.create!(
+    user = User.new(
       email: prompt('Email: '),
       password: prompt('Password: '),
       password_confirmation: prompt('Confirm password: ')
     )
     if user.save
-        p "User #{user.email} created."
+      p "User #{user.email} created."
     else
       STDERR.puts('Cannot create a new user:')
       user.errors.full_messages.each do |message|
@@ -54,7 +60,7 @@ namespace :initial_setup do
     end
   end
 
-private
+  private
 
   def prompt(message)
     print(message)

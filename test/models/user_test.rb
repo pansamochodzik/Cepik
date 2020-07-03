@@ -26,4 +26,8 @@ class UserTest < ActiveSupport::TestCase
 
     assert @user.invalid?
   end
+
+  test 'user email is unique?' do
+    assert_equal 'test@test.com', @user.email
+  end
 end
