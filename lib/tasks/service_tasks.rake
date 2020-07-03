@@ -41,11 +41,11 @@ namespace :initial_setup do
   task add_user: :environment do
     user = User.create!(
       email: prompt('Email: '),
-      password: 'password',
-      password_confirmation: 'password'
+      password: prompt('Password: '),
+      password_confirmation: prompt('Confirm password: ')
     )
     if user.save
-        p "Created user. Password: password"
+        p "User #{user.email} created."
     else
       STDERR.puts('Cannot create a new user:')
       user.errors.full_messages.each do |message|
