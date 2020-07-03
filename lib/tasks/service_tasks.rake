@@ -39,10 +39,25 @@ namespace :initial_setup do
   end
 
   task add_user: :environment do
-    User.create!(
-      email: 'tomasz.adach@gemisoft.pl',
+    user = User.create!(
+      email: prompt('Email: '),
       password: 'password',
-      password_confirmed: 'password'
+      password_confirmation: 'password'
     )
+    if user.save
+        p "Created user. Password: password"
+    else
+      STDERR.puts('Cannot create a new user:')
+      user.errors.full_messages.each do |message|
+        STDERR.puts(" * #{message}")
+      end
+    end
+  end
+
+private
+
+  def prompt(message)
+    print(message)
+    STDIN.gets.chop
   end
 end
