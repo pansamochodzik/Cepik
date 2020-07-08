@@ -28,3 +28,4 @@
 
 #ignore db setup
 /config/database.yml
+/config/secrets.yml
