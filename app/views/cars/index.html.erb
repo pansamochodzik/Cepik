@@ -38,9 +38,14 @@
             <td style="white-space: nowrap"><%= country_name(car) %></td>
             <td style="width: 15px"><%= car.year_of_production %></td>
             <td style="width: 15px"><%= car.year_of_registration %></td>
-            <td style="white-space: nowrap"><%= link_to 'Show', car_path(car), class: "text-dark" %> |
-              <%= link_to 'Delete', car_path(car), method: :delete, class: "text-dark" %> |
-              <%= link_to 'Edit', edit_car_path(car), class: "text-dark" %>
+            <td style="white-space: nowrap">
+              <% if user_signed_in? %>
+                <%= link_to 'Show', car_path(car), class: "text-dark" %> |
+                <%= link_to 'Delete', car_path(car), method: :delete, class: "text-dark" %> |
+                <%= link_to 'Edit', edit_car_path(car), class: "text-dark" %>
+              <% else %>
+                <%= link_to 'Show', car_path(car), class: "text-dark" %>
+              <% end %>
             </td>
           </tbody>
         <% end %>
