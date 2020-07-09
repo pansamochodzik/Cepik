@@ -21,7 +21,7 @@
       </p>
       <p>
         <%= form.label 'Registration country' %>
-        <%= form.select :country_id, options_for_select(@countries), prompt: 'Select country'  %>
+        <%= form.select :country_id, options_for_select(@countries, selected: @car.country_id), prompt: 'Select country'  %>
       </p>
       <p>
         <%= form.label :year_of_production %>

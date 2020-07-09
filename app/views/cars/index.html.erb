@@ -2,11 +2,6 @@
   <div class="container">
     <div class="row">
       <div class="col-4">
-        <% if flash[:notice] %>
-          <div class="alert alert-success text-center mb-0" role="alert">
-            <h6><%= flash[:notice] %></h6>
-          </div>
-        <% end %>
       </div>
       <div class="col-5 text-left text-danger">
         <h1>Welcome To Car List</h1>
@@ -24,8 +19,8 @@
           <th style="white-space: nowrap">Vin number</th>
           <th style="white-space: nowrap">License plate</th>
           <th style="white-space: nowrap">Registration country</th>
-          <th style="white-space: nowrap">Year of production</th>
-          <th style="white-space: nowrap">Year of registration</th>
+          <th>Year of production</th>
+          <th>Year of registration</th>
           <th>Action</th>
         </thead>
         <% @cars.each.with_index(1) do |car, index| %>
@@ -38,9 +33,12 @@
             <td style="white-space: nowrap"><%= country_name(car) %></td>
             <td style="width: 15px"><%= car.year_of_production %></td>
             <td style="width: 15px"><%= car.year_of_registration %></td>
-            <td style="white-space: nowrap"><%= link_to 'Show', car_path(car), class: "text-dark" %> |
-              <%= link_to 'Delete', car_path(car), method: :delete, class: "text-dark" %> |
-              <%= link_to 'Edit', edit_car_path(car), class: "text-dark" %>
+            <td style="white-space: nowrap">
+              <%= link_to 'Show', car_path(car), class: "text-dark" %>
+              <% if user_signed_in? %>
+                 | <%= link_to 'Delete', car_path(car), method: :delete, class: "text-dark" %> |
+                <%= link_to 'Edit', edit_car_path(car), class: "text-dark" %>
+              <% end %>
             </td>
           </tbody>
         <% end %>
