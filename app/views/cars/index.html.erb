@@ -43,6 +43,7 @@
           </tbody>
         <% end %>
       </table>
+      <%= will_paginate @posts, params: @will_paginate_params, class: 'text-center mx-auto' %>
     </div>
   </div>
 </section>

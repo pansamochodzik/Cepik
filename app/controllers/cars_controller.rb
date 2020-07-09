@@ -4,7 +4,8 @@ class CarsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @cars = Car.all
+    @cars = Car.all.paginate(page: params[:page], per_page: 30)
+
   end
 
   def show
