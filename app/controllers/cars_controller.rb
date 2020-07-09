@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 class CarsController < ApplicationController
-<<<<<<< HEAD
-  before_action :authenticate_user!, only: [:new, :edit, :destroy]
-=======
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
->>>>>>> master
 
   def index
     @cars = Car.all.paginate(page: params[:page], per_page: 30)
