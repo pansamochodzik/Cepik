@@ -1,0 +1,31 @@
+<%= form_with model: @user, local: true do |form| %>
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-5">
+      <p>
+        <%= form.label :email %>
+        <%= form.text_field :email %>
+      </p>
+      <p>
+        <% if current_user.id != @user.id %>
+        <%= form.label :admin %>
+        <%= form.select :admin, ['true', 'false'], selected: @user.admin %>
+        <% end %>
+      </p>
+      <%= form.submit 'Save', class: "btn btn-primary" %>
+    </div>
+    <% if @user.errors.any? %>
+      <div class="col-4 p-0">
+        <div class="alert alert-danger">
+          <h2>Errors:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message|%>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
