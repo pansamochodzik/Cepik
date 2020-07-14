@@ -2,7 +2,7 @@
   <div class="container">
     <div class="col-12">
       <div class="m-auto pt-5 text-center">
-        <h2>Change your password</h2>
+        <h2>Set/Change your password</h2>
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <%= f.hidden_field :reset_password_token %>
@@ -18,7 +18,7 @@
 
           <div class="actions mb-2">
             <%= f.submit "Send me reset password instructions" %>
-            <%= f.submit "Change my password" %>
+            <%= f.submit "Set/Change your password" %>
           </div>
         <% end %>
       </div>
