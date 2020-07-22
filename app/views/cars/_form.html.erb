@@ -31,6 +31,17 @@
         <%= form.label :year_of_registration %>
         <%= form.text_field :year_of_registration %>
       </p>
+      <p>
+        <% if @car.new_record? %>
+          <%= form.fields_for :mileages, @car.mileages do |builder| %>
+            <%= builder.label :distance %>
+            <%= builder.text_field :distance %>
+          <% end %>
+        <% else %>
+        <%= form.label :distance %>
+        <%= form.text_field :distance, value: car_distance(@car), disabled: true %>
+        <% end %>
+      </p>
       <%= form.submit 'Save', class: "btn btn-primary" %>
     </div>
     <% if @car.errors.any? %>

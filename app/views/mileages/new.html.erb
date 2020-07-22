@@ -1,0 +1,56 @@
+
+<section class="bg-light" style="min-height: 800px">
+  <div class="container">
+    <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-10">
+        <h1 class="text-info">New Distance</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <%= form_with model: @distance, local: true do |form| %>
+        <div class="row">
+            <div class="col-1">
+            </div>
+            <div class="col-5">
+              <%= form.fields_for :cars do |car| %>
+                <p>
+                  <%= car.label :brand %>
+                  <%= car.text_field :brand, value: @distance.car.brand, disabled: true %>
+                </p>
+                <p>
+                  <%= car.label :license_plate %>
+                  <%= car.text_field :license_plate, value: @distance.car.license_plate, disabled: true %>
+                </p>
+                <p>
+                  <%= car.label :vin_number %>
+                  <%= car.text_field :vin_number, value: @distance.car.vin_number, disabled: true %>
+                </p>
+              <% end %>
+              <p>
+                <%= form.label :distance %>
+                <%= form.text_field :distance %>
+              </p>
+              <%= form.hidden_field :car_id, value: @distance.car_id  %>
+              <%= form.submit 'Save', class: "btn btn-primary" %>
+            </div>
+            <% if @distance.errors.any? %>
+              <div class="col-4 p-0">
+                <div class="alert alert-danger">
+                  <h2>Errors:</h2>
+                  <ul>
+                    <% @distance.errors.full_messages.each do |message|%>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

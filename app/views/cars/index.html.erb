@@ -13,31 +13,31 @@
     <div class="row">
       <table class="table">
         <thead class="bg-info text-light">
-          <th>No.</th>
           <th>Brand</th>
           <th>Colour</th>
-          <th style="white-space: nowrap">Vin number</th>
-          <th style="white-space: nowrap">License plate</th>
-          <th style="white-space: nowrap">Registration country</th>
+          <th>Vin number</th>
+          <th>License plate</th>
+          <th>Registration country</th>
           <th>Year of production</th>
           <th>Year of registration</th>
+          <th>Distance</th>
           <th>Action</th>
         </thead>
-        <% @cars.each.with_index(1) do |car, index| %>
+        <% @cars.each do |car| %>
           <tbody class=<%= background_colour(car) %>>
-            <td><%= index %></td>
-            <td style="white-space: nowrap"><%= link_to car.brand, car_path(car), class: "text-dark" %></td>
-            <td style="white-space: nowrap"><%= car.colour %></td>
-            <td style="white-space: nowrap"><%= car.vin_number %></td>
+            <td><%= link_to car.brand, car_path(car), class: "text-dark" %></td>
+            <td><%= car.colour %></td>
+            <td><%= car.vin_number %></td>
             <td style="white-space: nowrap"><%= car.license_plate %></td>
             <td style="white-space: nowrap"><%= country_name(car) %></td>
-            <td style="width: 15px"><%= car.year_of_production %></td>
-            <td style="width: 15px"><%= car.year_of_registration %></td>
-            <td style="white-space: nowrap">
+            <td><%= car.year_of_production %></td>
+            <td><%= car.year_of_registration %></td>
+            <td><%= car_distance(car)%></td>
+            <td class="pb-0" style="white-space: nowrap">
               <%= link_to 'Show', car_path(car), class: "text-dark" %>
-              <% if user_signed_in? %>
-                 | <%= link_to 'Delete', car_path(car), method: :delete, class: "text-dark" %> |
-                <%= link_to 'Edit', edit_car_path(car), class: "text-dark" %>
+              <% if user_signed_in? %> |
+                <%= link_to 'Edit', edit_car_path(car), class: "text-dark" %> |
+                <%= link_to 'New distance', new_mileage_path(car_id: car.id), class: "text-dark" %>
               <% end %>
             </td>
           </tbody>

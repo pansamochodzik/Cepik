@@ -14,4 +14,12 @@ module CarHelper
       'bg-danger'
     end
   end
+
+  def car_distance(car)
+    if car.mileages.present?
+      car.mileages.last.distance
+    else
+      '--------'
+    end
+  end
 end

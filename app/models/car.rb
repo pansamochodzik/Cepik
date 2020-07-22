@@ -4,6 +4,9 @@ class Car < ApplicationRecord
   before_save :create_name
 
   belongs_to :country
+  has_many :mileages 
+
+  accepts_nested_attributes_for :mileages
 
   validates :brand, format: { with: /\A[^\-^\W^\_\d]+[a-zA-Z\-\d]*[^\-^\W^\_\d]\z/ },
                     length: { minimum: 1, maximum: 15 }

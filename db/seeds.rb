@@ -18,7 +18,7 @@ p "Created #{Country.count} countries"
 
 p 'Creating Cars'
 
-30.times do
+40.times do
   Car.create!(
     brand: Faker::Vehicle.make,
     colour: Faker::Vehicle.color,
@@ -26,7 +26,8 @@ p 'Creating Cars'
     license_plate: Faker::Vehicle.license_plate,
     country_id: Random.rand(1..225),
     year_of_production: year_of_production = Faker::Vehicle.year,
-    year_of_registration: year_of_production
+    year_of_registration: year_of_production,
+    mileages_attributes: [distance: Random.rand(10000..600000)]
   )
 end
 

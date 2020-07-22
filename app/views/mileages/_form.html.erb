@@ -1,0 +1,6 @@
+<%= form_with model: @distance, html:{ class: 'distance_form' } do |form| %>
+  <%= form.label :distance %>
+  <%= form.text_field :distance %>
+  <%= form.hidden_field :car_id, value: @distance.car.id  %>
+  <%= form.submit 'Save', class: "btn btn-primary" %>
+<% end %>

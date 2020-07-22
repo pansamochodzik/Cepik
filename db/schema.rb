@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_14_134047) do
+ActiveRecord::Schema.define(version: 2020_07_15_104123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 2020_07_14_134047) do
     t.index ["name"], name: "index_countries_on_name", unique: true
   end
 
+  create_table "mileages", force: :cascade do |t|
+    t.integer "distance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "car_id"
+    t.index ["car_id"], name: "index_mileages_on_car_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,4 +70,5 @@ ActiveRecord::Schema.define(version: 2020_07_14_134047) do
   end
 
   add_foreign_key "cars", "countries"
+  add_foreign_key "mileages", "cars"
 end
