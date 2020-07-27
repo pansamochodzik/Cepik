@@ -253,7 +253,7 @@ DEPENDENCIES
   bootstrap (~> 4.4, >= 4.4.1)
   byebug
   capybara (>= 2.15)
-  chromedriver-helper
+  chromedriver-helper (~> 2.1, >= 2.1.1)
   coffee-rails (~> 4.2)
   database_cleaner (~> 1.8, >= 1.8.5)
   devise (~> 4.7, >= 4.7.2)
@@ -268,7 +268,7 @@ DEPENDENCIES
   rollbar (~> 2.26)
   rubocop
   sass-rails (~> 5.0)
-  selenium-webdriver
+  selenium-webdriver (~> 3.142, >= 3.142.7)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
