@@ -9,8 +9,8 @@
       </p>
       <p>
         <% if current_user.id != @user.id %>
-        <%= form.label :admin %>
-        <%= form.select :admin, ['true', 'false'], selected: @user.admin %>
+          <%= form.label :admin %>
+          <%= form.select :admin, ['true', 'false'] %>
         <% end %>
       </p>
       <%= form.submit 'Save', class: "btn btn-primary" %>
