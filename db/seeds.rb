@@ -33,3 +33,26 @@ p 'Creating Cars'
 end
 # car.update(mileagas_attributes[distance: Random.rand(10000..600000)]
 p "Created #{Car.count} cars"
+
+p 'Creating users'
+
+admin = User.new(
+  email: 'admin@admin.com',
+  password: 'password',
+  password_confirmation: 'password',
+  admin: true
+)
+
+user = User.new(
+  email: 'user@user.com',
+  password: 'password',
+  password_confirmation: 'password',
+  admin: false
+)
+
+admin.skip_confirmation!
+admin.save!
+user.skip_confirmation!
+user.save!
+
+p "Created #{User.count} users"

@@ -50,14 +50,10 @@ class UsersController < ApplicationController
   private
 
   def authorize_admin
-    redirect_to root_path, alert: 'Permissions denied' unless
-     current_user.admin?
+    redirect_to root_path, alert: 'Permissions denied' unless current_user.admin?
   end
 
   def user_params
-    params.require(:user).permit(
-      :email,
-      :admin
-    )
+    params.require(:user).permit(:email, :admin)
   end
 end
