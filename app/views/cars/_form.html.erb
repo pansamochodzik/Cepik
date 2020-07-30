@@ -1,8 +1,8 @@
 <%= form_with model: @car, local: true do |form| %>
-<div class="row">
-    <div class="col-1">
+<div class='row'>
+    <div class='col-1'>
     </div>
-    <div class="col-5">
+    <div class='col-5'>
       <p>
         <%= form.label :brand %>
         <%= form.text_field :brand %>
@@ -42,11 +42,11 @@
           <%= form.text_field :distance, value: car_distance(@car), disabled: true %>
         <% end %>
       </p>
-      <%= form.submit 'Save', class: "btn btn-primary" %>
+      <%= form.submit 'Save', class: 'btn btn-primary' %>
     </div>
     <% if @car.errors.any? %>
-      <div class="col-4 p-0">
-        <div class="alert alert-danger">
+      <div class='col-4 p-0'>
+        <div class='alert alert-danger'>
           <h2>Errors:</h2>
           <ul>
             <% @car.errors.full_messages.each do |message|%>
