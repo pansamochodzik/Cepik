@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authorize_admin
 
   def index
-      @users = User.all
+    @users = User.all
   end
 
   def show
@@ -50,8 +50,7 @@ class UsersController < ApplicationController
   private
 
   def authorize_admin
-    redirect_to root_path, alert: 'Permissions denied' unless
-     current_user.admin?
+    redirect_to root_path, alert: 'Permissions denied' unless current_user.admin?
   end
 
   def user_params
