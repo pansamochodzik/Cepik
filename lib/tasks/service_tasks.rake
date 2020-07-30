@@ -14,6 +14,8 @@ namespace :initial_setup do
         year_of_production: year_of_production = Faker::Vehicle.year,
         year_of_registration: year_of_production
       )
+      car.save
+      car.mileages.build.update(distance: Random.rand(10000..600000))
     end
     p "Created #{Car.count} cars"
   end
@@ -32,7 +34,7 @@ namespace :initial_setup do
   task countries: :environment do
     require 'csv'
     p 'Created countries.'
-    CSV.foreach(Rails.root.join('lib/csv_files/countries.csv')) do |row|
+    CSV.foreach(Rails.root.join('app/db/seeds/countries.csv')) do |row|
       Country.create(
         {
           name: row[0],

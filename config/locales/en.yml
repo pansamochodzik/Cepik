@@ -20,3 +20,5 @@ en:
             year_of_registration:
               inclusion: should be between 1900 and the current year.
               not_a_number: cannot be blank.
+        mileage:
+          invalid: 'can only include numbers. Cannot be blank. Maximum 7 characters.'

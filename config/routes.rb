@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { confirmations: 'users/confirmations'}
   resources :users
 
-  get 'cars/home', to: 'cars#home'
-  resources :cars
+  resources :cars, except: :destroy do
+    get :home, on: :member
+  end
+
+  resources :mileages, only: [:new, :create]
 
   root 'cars#home'
 end

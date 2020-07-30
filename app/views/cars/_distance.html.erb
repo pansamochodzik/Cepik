@@ -1,0 +1,10 @@
+<tr>
+  <td>
+    <% if mileage.created_at.sec > 0 %>
+      <%= mileage.created_at.strftime("%d-%B-%y %H:#{mileage.created_at.min + 1}") %>
+    <% else %>
+      <%= mileage.created_at.strftime("%d-%B-%y %H:%M") %>
+    <% end %>
+  </td>
+  <td><%= mileage.distance %></td>
+</tr>

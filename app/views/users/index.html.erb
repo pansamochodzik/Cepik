@@ -1,36 +1,36 @@
-<section class="bg-light" style="min-height: 400px">
-  <div class="container">
-    <div class="row">
-      <div class="col-4">
+<section class='bg-light' style='min-height: 400px'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-4'>
       </div>
-      <div class="col-5 text-left text-danger">
+      <div class='col-5 text-left text-danger'>
         <h1>Users Manager</h1>
       </div>
-      <div class="col-3 text-right pt-3">
-        <%= link_to 'Add new user', new_user_path, class: "btn btn-success" %>
+      <div class='col-3 text-right pt-3'>
+        <%= link_to 'Add new user', new_user_path, class: 'btn btn-success' %>
       </div>
     </div>
-    <div class="row">
-      <table class="table">
-        <thead class="bg-info text-light">
+    <div class='row'>
+      <table class='table'>
+        <thead class='bg-info text-light'>
           <th>No.</th>
           <th>Email</th>
           <th>Admin?</th>
           <th>Action</th>
         </thead>
         <% @users.each.with_index(1) do |user, index| %>
-          <tbody class="bg-warning">
+          <tbody class='bg-warning'>
             <td><%= index %></td>
-            <td><%= link_to user.email, user_path(user), class: "text-dark" %></td>
+            <td><%= link_to user.email, user_path(user), class: 'text-dark' %></td>
             <td><%= user.admin %></td>
-            <td style="white-space: nowrap">
-              <%= link_to 'Show', user_path(user), class: "text-dark" %> |
+            <td style='white-space: nowrap'>
+              <%= link_to 'Show', user_path(user), class: 'text-dark' %> |
               <% if current_user.id == user.id %>
-                <span style="text-decoration: line-through;">Delete </span> |
+                <span style='text-decoration: line-through;'>Delete </span> |
               <% else %>
-                <%= link_to 'Delete', user_path(user),method: :delete, class: "text-dark" %> |
+                <%= link_to 'Delete', user_path(user),method: :delete, class: 'text-dark' %> |
               <% end %>
-              <%= link_to 'Edit', edit_user_path(user), class: "text-dark" %>
+              <%= link_to 'Edit', edit_user_path(user), class: 'text-dark' %>
             </td>
           </tbody>
         <% end %>
