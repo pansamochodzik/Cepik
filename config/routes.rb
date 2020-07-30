@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :cars, except: :destroy do
-      get :home, on: :member
+    get :home, on: :member
   end
 
   resources :mileages, only: [:new, :create]

@@ -4,7 +4,7 @@ class Car < ApplicationRecord
   before_save :create_name
 
   belongs_to :country
-  has_many :mileages 
+  has_many :mileages
 
   accepts_nested_attributes_for :mileages
 

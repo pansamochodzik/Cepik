@@ -14,7 +14,6 @@ class MileageTest < ActiveSupport::TestCase
   end
 
   test 'validation' do
-    binding.pry
     assert @mileage.valid?
     assert @mileage_two.valid?
   end

@@ -38,8 +38,8 @@
             <%= builder.text_field :distance %>
           <% end %>
         <% else %>
-        <%= form.label :distance %>
-        <%= form.text_field :distance, value: car_distance(@car), disabled: true %>
+          <%= form.label :distance %>
+          <%= form.text_field :distance, value: car_distance(@car), disabled: true %>
         <% end %>
       </p>
       <%= form.submit 'Save', class: "btn btn-primary" %>
