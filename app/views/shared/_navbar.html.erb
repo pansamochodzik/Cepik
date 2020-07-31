@@ -25,7 +25,7 @@
           <% end %>
         </li>
         <li class='nav-item'>
-          <% if current_user.is_admin? %>
+          <% if current_user && current_user.is_admin? %>
             <%= link_to 'Users Manager', users_path, class: 'nav-link' %>
           <% end %>
         </li>
