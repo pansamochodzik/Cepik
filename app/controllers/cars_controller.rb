@@ -1,19 +1,18 @@
 # frozen_string_literal: true
 
 class CarsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-
   def index
     @cars = Car.all.paginate(page: params[:page], per_page: 30)
-
   end
 
   def show
     @car = Car.find(params[:id])
+    @distances = @car.mileages.newest
   end
 
   def new
     @car = Car.new
+    @car.mileages.build
     @countries = Country.alphabetically.map { |country| [country.name, country.id] }
   end
 
@@ -27,14 +26,6 @@ class CarsController < ApplicationController
       @countries = Country.alphabetically.map { |country| [country.name, country.id] }
       render :new
     end
-  end
-
-  def destroy
-    @car = Car.find(params[:id])
-
-    @car.destroy
-    flash[:notice] = 'Successfully deleted.'
-    redirect_to cars_path
   end
 
   def edit
@@ -64,7 +55,8 @@ class CarsController < ApplicationController
       :license_plate,
       :country_id,
       :year_of_production,
-      :year_of_registration
+      :year_of_registration,
+      mileages_attributes: [:car_id, :distance]
     )
   end
 end

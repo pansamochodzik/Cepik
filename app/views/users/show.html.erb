@@ -1,0 +1,48 @@
+<section class='bg-light' style='min-height: 400px'>
+  <div class='container'>
+    <div class='row'>
+      <table class='table'>
+        <thead class='bg-info text-light'>
+          <th>Email</th>
+          <th>Failed attempts</th>
+          <th>Locked at</th>
+          <th>Unlock at</th>
+          <th>Created at</th>
+          <th>Updated at</th>
+          <th>Admin?</th>
+          <th>Action</th>
+        </thead>
+        <tbody class='bg-warning'>
+          <td><%= @user.email %></td>
+          <td><%= @user.failed_attempts %></td>
+          <td>
+            <% if @user.locked_at == nil %>
+              0
+            <% else %>
+              <%= @user.locked_at.strftime('%d %B %Y') %>
+            <% end %>
+          </td>
+          <td>
+            <% if @user.unlock_token == nil %>
+              0
+            <% else %>
+              <%= @user.unlock_token.strftime('%d %B %Y') %>
+            <% end %>
+          </td>
+          <td><%= @user.created_at.strftime('%d %B %Y') %></td>
+          <td><%= @user.updated_at.strftime('%d %B %Y') %></td>
+          <td><%= @user.admin %></td>
+          <td style='white-space: nowrap'>
+            <%= link_to 'Back', :back, class: 'text-dark' %> |
+            <% if current_user.id == @user.id %>
+              <span style='text-decoration: line-through;'>Delete </span> |
+            <% else %>
+              <%= link_to 'Delete', user_path(@user),method: :delete, class: 'text-dark' %> |
+            <% end %>
+            <%= link_to 'Edit', edit_user_path(@user), class: 'text-dark' %>
+          </td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

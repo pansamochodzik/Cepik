@@ -1,32 +1,54 @@
-<section class="bg-light" style="min-height: 400px">
-  <div class="container">
-    <div class="row">
-      <table class="table">
-        <thead class="bg-info text-light">
+<section class='bg-light' style='min-height: 400px'>
+  <div class='container'>
+    <div class='row'>
+      <table class='table'>
+        <thead class='bg-info text-light'>
           <th>Brand</th>
           <th>Colour</th>
-          <th style="white-space: nowrap">Vin number</th>
-          <th style="white-space: nowrap">License plate</th>
-          <th style="white-space: nowrap">Registration country</th>
-          <th style="white-space: nowrap">Year of production</th>
-          <th style="white-space: nowrap">Year of registration</th>
+          <th>Vin number</th>
+          <th>License plate</th>
+          <th>Registration country</th>
+          <th>Year of production</th>
+          <th>Year of registration</th>
+          <th>Distance</th>
           <th>Action</th>
         </thead>
         <tbody class=<%= background_colour(@car) %>>
-          <td style="white-space: nowrap"><%= @car.brand %></td>
-          <td style="white-space: nowrap"><%= @car.colour %></td>
-          <td style="white-space: nowrap"><%= @car.vin_number %></td>
-          <td style="white-space: nowrap"><%= @car.license_plate %></td>
-          <td style="white-space: nowrap"><%= country_name(@car) %></td>
-          <td style="width: 15px"><%= @car.year_of_production %></td>
-          <td style="width: 15px"><%= @car.year_of_registration %></td>
-          <td style="white-space: nowrap">
-            <%= link_to 'Back', :back, class: "text-dark" %>
-            <% if user_signed_in? %>
-               | <%= link_to 'Delete', car_path(@car), method: :delete, class: "text-dark"%> |
-              <%= link_to 'Edit', edit_car_path(@car), class: "text-dark" %>
+          <td><%= @car.brand %></td>
+          <td><%= @car.colour %></td>
+          <td><%= @car.vin_number %></td>
+          <td><%= @car.license_plate %></td>
+          <td><%= country_name(@car) %></td>
+          <td><%= @car.year_of_production %></td>
+          <td><%= @car.year_of_registration %></td>
+          <td><%= car_distance(@car) %></td>
+          <td style='white-space: nowrap'>
+            <%= link_to 'Back', :back, class: 'text-dark' %>
+            <% if user_signed_in? %> |
+              <%= link_to 'Edit', edit_car_path(@car), class: 'text-dark' %>
             <% end %>
           </td>
+        </tbody>
+      </table>
+    </div>
+    <div class='row'>
+      <div class='col-12 text-right pt-3'>
+        <% if user_signed_in? %>
+          <%= link_to 'New distance', new_mileage_path(car_id: @car.id), remote: true, class: 'btn btn-success add-distance-button-js' %>
+          <div class='distance-form-js'></div>
+        <% end %>
+      </div>
+    </div>
+    <div class='row'>
+      <table class='table table_distance-js'>
+        <thead class='bg-info text-light'>
+          <th>Date</th>
+          <th>Distance</th>
+        </thead>
+        <tbody class='bg-warning'>
+          <% @distances.each do |mileage| %>
+            <%= render 'distance', mileage: mileage %>
+          <% end %>
         </tbody>
       </table>
     </div>

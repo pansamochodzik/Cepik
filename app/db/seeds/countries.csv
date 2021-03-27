@@ -46,7 +46,7 @@ Equatorial Guinea,GQ
 Eritrea,ER
 Estonia,EE
 Ethiopia,ET
-Falkland Islands (Malvinas),FK
+Malvinas,FK
 Faroe Islands,FO
 Fiji,FJ
 Finland,FI
@@ -69,7 +69,7 @@ Guinea,GN
 Guinea-Bissau,GW
 Guyana,GY
 Haiti,HT
-Holy See (Vatican),VA
+Vatican,VA
 Honduras,HN
 Hong Kong,HK
 Hungary,HU
@@ -153,13 +153,13 @@ Romania,RO
 Russia,RU
 Rwanda,RW
 Saint Helena,SH
-Saint Kitts and Nevis,KN
+Saint Kitts&Nevis,KN
 Saint Lucia,LC
-Saint Pierre and Miquelon,PM
-Saint Vincent and the Grenadines,VC
+Saint Pierre,PM
+Saint Vincent,VC
 Samoa,WS
 San Marino,SM
-Sao Tome and Principe,ST
+Sao Tome&Principe,ST
 Saudi Arabia,SA
 Senegal,SN
 Seychelles,SC
@@ -174,7 +174,7 @@ Spain,ES
 Sri Lanka,LK
 Sudan,SD
 Suriname,SR
-Svalbard and Jan Mayen,SJ
+Svalbard&Jan Mayen,SJ
 Swaziland,SZ
 Sweden,SE
 Switzerland,CH
@@ -190,7 +190,7 @@ Trinidad and Tobago,TT
 Tunisia,TN
 Turkey,TR
 Turkmenistan,TM
-Turks and Caicos Islands,TC
+Turks&Caicos Islands,TC
 Tuvalu,TV
 Uganda,UG
 Ukraine,UA
